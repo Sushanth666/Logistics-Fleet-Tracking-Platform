@@ -78,16 +78,14 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-y-auto bg-slate-900 transition-colors duration-300">
+    <div className="relative min-h-screen w-full bg-slate-900 text-slate-100 flex flex-col lg:flex-row transition-colors duration-300">
       {/* FLOATING THEME TOGGLE BUTTON */}
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
 
-      {/* CINEMATIC SPLIT SCREEN */}
-      <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col lg:flex lg:flex-row transition-colors duration-300">
-        {/* LEFT 6 COLS: High-Impact Visual Showcase */}
-        <div className="lg:w-1/2 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white p-8 sm:p-12 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative overflow-hidden lg:min-h-screen">
+      {/* LEFT 6 COLS: High-Impact Visual Showcase */}
+      <div className="lg:w-1/2 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-10 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative overflow-visible lg:overflow-hidden lg:min-h-screen lg:sticky lg:top-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
           
@@ -171,7 +169,7 @@ export const LoginPage = () => {
         </div>
 
         {/* RIGHT 6 COLS: Rich Studio Auth Form with Signature Image 4 Design */}
-        <div className="lg:w-1/2 bg-slate-50 dark:bg-slate-950 px-6 py-10 sm:px-10 lg:px-14 overflow-y-auto flex flex-col justify-start items-center relative transition-colors duration-300">
+        <div className="w-full lg:w-1/2 bg-slate-50 dark:bg-slate-950 px-4 py-8 sm:px-10 lg:px-14 lg:overflow-y-auto flex flex-col justify-start items-center relative transition-colors duration-300">
           <div className="w-full max-w-md group relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xl p-7 sm:p-8 space-y-6 mb-6">
             {/* Top Radiant Highlight Bar — clipped with rounded-t-3xl on its own div */}
             <div className="absolute top-0 left-0 right-0 h-2 rounded-t-3xl overflow-hidden">
@@ -330,6 +328,5 @@ export const LoginPage = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
