@@ -3,7 +3,23 @@
 @tailwind utilities;
 
 :root,
-.theme-violet {
+.theme-light,
+html.light {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-text-primary: #0f172a;
+  --color-text-muted: #64748b;
+  --color-brand: #7c3aed;
+  --color-brand-hover: #6d28d9;
+  --color-brand-glow: rgba(124, 58, 237, 0.15);
+  --map-tile-filter: none;
+}
+
+.theme-violet,
+html.dark {
   --color-bg: #120b1f;
   --color-surface: #1e1233;
   --color-surface-subtle: #160d26;
@@ -83,19 +99,6 @@
   --color-brand-glow: rgba(168, 85, 247, 0.3);
 }
 
-.theme-light,
-html.light {
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
-  --color-surface-subtle: #f1f5f9;
-  --color-border: #e2e8f0;
-  --color-border-hover: #cbd5e1;
-  --color-text-primary: #0f172a;
-  --color-text-muted: #64748b;
-  --color-brand: #7c3aed;
-  --color-brand-hover: #6d28d9;
-  --color-brand-glow: rgba(124, 58, 237, 0.15);
-}
 
 /* Instant light mode overrides for standard dark slate utility classes */
 html.light body {

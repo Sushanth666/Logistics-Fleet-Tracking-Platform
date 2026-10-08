@@ -5,9 +5,16 @@ const ThemeContext = createContext(null);
 export const ThemeProvider = ({ children }) => {
   const [themeMode, setThemeMode] = useState(() => {
     try {
-      return localStorage.getItem('bharatlogix_mode') || localStorage.getItem('logipulse_mode') || 'dark';
+      const explicit = localStorage.getItem('bharatlogix_theme');
+      if (explicit === 'dark' || explicit === 'light') {
+        return explicit;
+      }
+      // Clear legacy storage keys that had defaulted to 'dark'
+      localStorage.removeItem('bharatlogix_mode');
+      localStorage.removeItem('logipulse_mode');
+      return 'light';
     } catch {
-      return 'dark';
+      return 'light';
     }
   });
 
@@ -24,7 +31,7 @@ export const ThemeProvider = ({ children }) => {
     }
 
     try {
-      localStorage.setItem('bharatlogix_mode', themeMode);
+      localStorage.setItem('bharatlogix_theme', themeMode);
     } catch (e) {
       console.warn('Could not persist theme mode:', e);
     }

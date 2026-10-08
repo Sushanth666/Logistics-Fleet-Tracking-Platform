@@ -36,7 +36,7 @@ export const Layout = () => {
   };
 
   return (
-    <div className="h-screen w-full overflow-hidden bg-slate-950 text-slate-100 flex">
+    <div className="h-screen w-full overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex">
       {/* Sidebar navigation */}
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
