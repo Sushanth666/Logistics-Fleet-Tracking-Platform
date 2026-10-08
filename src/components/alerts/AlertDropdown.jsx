@@ -31,8 +31,8 @@ export const AlertDropdown = ({ isDocked = false, className = '' }) => {
       >
         <Bell className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
         {unreadAlertsCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-md animate-pulse">
-            {unreadAlertsCount}
+          <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-gradient-to-tr from-rose-500 via-rose-600 to-red-600 text-white text-[10px] font-black leading-none flex items-center justify-center ring-2 ring-white dark:ring-slate-900 shadow-sm shadow-rose-500/30 select-none pointer-events-none">
+            {unreadAlertsCount > 99 ? '99+' : unreadAlertsCount}
           </span>
         )}
       </button>
