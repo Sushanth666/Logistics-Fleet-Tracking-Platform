@@ -3,7 +3,7 @@ import { useFleet } from '../../context/FleetContext';
 import { Bell, CheckCheck, AlertTriangle, AlertCircle, Info, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export const AlertDropdown = () => {
+export const AlertDropdown = ({ isDocked = false, className = '' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { alerts, unreadAlertsCount, markAlertAsRead, markAllAlertsRead, restoreDefaultAlerts } = useFleet();
   const dropdownRef = useRef(null);
@@ -22,12 +22,16 @@ export const AlertDropdown = () => {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2.5 rounded-xl border transition-all cursor-pointer shadow-sm bg-white hover:bg-slate-50 border-slate-200 text-slate-700 hover:text-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-slate-800 dark:text-slate-300 dark:hover:text-white"
+        className={
+          isDocked
+            ? `relative p-2 rounded-full transition-all cursor-pointer text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 flex items-center justify-center ${className}`
+            : `relative p-2.5 rounded-xl border transition-all cursor-pointer shadow-sm bg-white hover:bg-slate-50 border-slate-200 text-slate-700 hover:text-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-slate-800 dark:text-slate-300 dark:hover:text-white ${className}`
+        }
         aria-label="View notifications"
       >
-        <Bell className="w-5 h-5" />
+        <Bell className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
         {unreadAlertsCount > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-lg animate-pulse">
+          <span className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white shadow-md animate-pulse">
             {unreadAlertsCount}
           </span>
         )}

@@ -41,8 +41,8 @@ export const UserDropdown = () => {
       >
         {/* Modern Circular Gradient Avatar with Embedded Duty Dot */}
         <div className="relative shrink-0">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 p-[1.5px] shadow-xs group-hover:scale-105 transition-transform duration-200">
-            <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center font-bold text-xs text-white">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 p-[1.5px] shadow-xs group-hover:scale-105 transition-transform duration-200">
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-700 to-indigo-800 flex items-center justify-center font-black text-[11px] text-white tracking-wider select-none">
               {displayInitials}
             </div>
           </div>
