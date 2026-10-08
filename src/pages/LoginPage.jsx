@@ -276,7 +276,7 @@ export const LoginPage = () => {
                 <span>TLS 1.3 • SOC-2 Type II</span>
               </span>
               <Link to="/signup" className="text-purple-600 dark:text-purple-400 font-bold hover:underline flex items-center gap-1">
-                Create Account <ArrowRight className="w-3 h-3" />
+                Onboard New Carrier <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
           </div>
