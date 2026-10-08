@@ -1,11 +1,22 @@
-# BharatLogix | National Fleet & Logistics Operations Platform
+<div align="center">
+  <a href="https://github.com/Sushanth666/Logistics-Fleet-Tracking-Platform">
+    <img src="public/logo.svg" alt="BharatLogix Logo" width="620" />
+  </a>
 
-[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-8.3-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?logo=leaflet&logoColor=white)](https://leafletjs.com/)
-[![Compliance](https://img.shields.io/badge/AIS--140-Certified-emerald)](https://morth.nic.in/)
-[![Gateway](https://img.shields.io/badge/ULIP-Integrated-purple)](https://gati-shakti.nic.in/)
+  <p align="center">
+    <strong>National Commercial Fleet Telematics &amp; Multi-Modal Freight Operations Platform</strong><br>
+    <em>AIS-140 Certified • Government ULIP Gateway Integrated • Real-Time GPS Telematics</em>
+  </p>
+
+  <p align="center">
+    <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19.0-61DAFB?logo=react&amp;logoColor=black" alt="React 19" /></a>
+    <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-8.3-646CFF?logo=vite&amp;logoColor=white" alt="Vite" /></a>
+    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css&amp;logoColor=white" alt="Tailwind CSS" /></a>
+    <a href="https://leafletjs.com/"><img src="https://img.shields.io/badge/Leaflet-1.9-199900?logo=leaflet&amp;logoColor=white" alt="Leaflet" /></a>
+    <a href="https://morth.nic.in/"><img src="https://img.shields.io/badge/AIS--140-Certified-emerald" alt="AIS-140" /></a>
+    <a href="https://gati-shakti.nic.in/"><img src="https://img.shields.io/badge/ULIP-Integrated-purple" alt="ULIP Gateway" /></a>
+  </p>
+</div>
 
 **BharatLogix** is an enterprise-grade, real-time logistics operations and fleet telematics platform designed specifically for commercial freight carriers, multi-modal transport operators, and national supply chain dispatchers across India.
 
