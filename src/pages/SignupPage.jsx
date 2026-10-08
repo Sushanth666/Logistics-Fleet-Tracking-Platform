@@ -29,7 +29,7 @@ export const SignupPage = () => {
     name: '',
     email: '',
     company: '',
-    role: 'Operations Lead',
+    role: '',
     password: '',
     confirmPassword: '',
     agreeTerms: true
@@ -60,6 +60,7 @@ export const SignupPage = () => {
     if (!formData.name.trim()) return 'Please enter your full name.';
     if (!formData.email.trim() || !formData.email.includes('@')) return 'Please enter a valid work email address.';
     if (!formData.company.trim()) return 'Please enter your fleet organization name.';
+    if (!formData.role) return 'Please select your Operational Authority Role.';
     if (formData.password.length < 6) return 'Password must be at least 6 characters.';
     if (formData.password !== formData.confirmPassword) return 'Passwords do not match.';
     if (!formData.agreeTerms) return 'Please accept the Platform Security Agreement.';
