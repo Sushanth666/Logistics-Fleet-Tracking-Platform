@@ -171,6 +171,15 @@ button.text-white span,
   color: #ffffff !important;
 }
 
+/* High-Contrast Light Mode Toast & Floating Alerts */
+html.light .pointer-events-auto .text-slate-200,
+html.light .pointer-events-auto .text-slate-100 {
+  color: #0f172a !important;
+}
+html.light .pointer-events-auto .text-slate-400 {
+  color: #64748b !important;
+}
+
 html.light aside {
   background-color: #ffffff !important;
   border-color: #e2e8f0 !important;

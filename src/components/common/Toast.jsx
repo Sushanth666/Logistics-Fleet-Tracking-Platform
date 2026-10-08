@@ -17,30 +17,31 @@ export const ToastContainer = () => {
         return (
           <div
             key={toast.id}
-            className={`pointer-events-auto flex items-start gap-3 p-4 rounded-xl border shadow-xl backdrop-blur-md transition-all animate-in slide-in-from-right duration-200 ${
+            className={`pointer-events-auto flex items-start gap-3 p-4 rounded-2xl border shadow-2xl backdrop-blur-xl transition-all animate-in slide-in-from-right duration-200 ${
               isSuccess
-                ? 'bg-slate-900/95 border-emerald-500/40 text-emerald-300'
+                ? 'bg-white dark:bg-slate-900/95 border-emerald-500/40 shadow-emerald-500/10'
                 : isError
-                ? 'bg-slate-900/95 border-rose-500/40 text-rose-300'
+                ? 'bg-white dark:bg-slate-900/95 border-rose-500/40 shadow-rose-500/10'
                 : isWarning
-                ? 'bg-slate-900/95 border-amber-500/40 text-amber-300'
-                : 'bg-slate-900/95 border-purple-500/40 text-slate-200'
+                ? 'bg-white dark:bg-slate-900/95 border-amber-500/40 shadow-amber-500/10'
+                : 'bg-white dark:bg-slate-900/95 border-purple-500/40 shadow-purple-500/10'
             }`}
           >
             <div className="shrink-0 mt-0.5">
-              {isSuccess && <CheckCircle2 className="w-5 h-5 text-emerald-400" />}
-              {isError && <AlertCircle className="w-5 h-5 text-rose-400" />}
-              {isWarning && <AlertTriangle className="w-5 h-5 text-amber-400" />}
-              {!isSuccess && !isError && !isWarning && <Info className="w-5 h-5 text-purple-400" />}
+              {isSuccess && <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />}
+              {isError && <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />}
+              {isWarning && <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />}
+              {!isSuccess && !isError && !isWarning && <Info className="w-5 h-5 text-purple-600 dark:text-purple-400" />}
             </div>
 
-            <div className="flex-1 text-xs leading-relaxed text-slate-200 font-medium">
+            <div className="flex-1 text-xs leading-relaxed text-slate-900 dark:text-slate-100 font-semibold">
               {toast.message}
             </div>
 
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-slate-400 hover:text-white p-0.5 rounded cursor-pointer transition-colors"
+              className="text-slate-400 hover:text-slate-800 dark:hover:text-white p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors shrink-0"
+              aria-label="Close notification"
             >
               <X className="w-4 h-4" />
             </button>
