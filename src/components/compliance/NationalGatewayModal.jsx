@@ -243,15 +243,15 @@ export const NationalGatewayModal = ({ isOpen, onClose }) => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`w-full min-w-0 py-2 px-2.5 rounded-xl font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                className={`w-full min-w-0 py-2 px-2.5 rounded-xl font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer select-none outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 ${
                   isActive
                     ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm font-bold border border-slate-200/80 dark:border-slate-700/80'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/60 dark:hover:bg-slate-800/60'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-indigo-600 dark:text-indigo-400' : ''}`} />
-                <span className="truncate text-xs font-semibold">{tab.label}</span>
-                <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono font-bold">
+                <Icon className={`w-3.5 h-3.5 shrink-0 pointer-events-none select-none ${isActive ? 'text-indigo-600 dark:text-indigo-400' : ''}`} />
+                <span className="truncate text-xs font-semibold select-none pointer-events-none">{tab.label}</span>
+                <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono font-bold select-none pointer-events-none">
                   {tab.count}
                 </span>
               </button>

@@ -481,3 +481,20 @@ html.light table td {
   scrollbar-width: none;
 }
 
+/* Prevent accidental blue text selection, tap highlights, and blue outlines on buttons and tabs */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+[role="button"],
+[role="tab"] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+

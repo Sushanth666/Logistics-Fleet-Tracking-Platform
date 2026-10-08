@@ -166,14 +166,14 @@ export const PlatformSettingsPage = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shrink-0 transition-all cursor-pointer select-none outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 ${
               activeTab === tab.id
                 ? 'bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 text-white shadow-md shadow-purple-600/25'
                 : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
             }`}
           >
-            <tab.icon className="w-3.5 h-3.5 shrink-0" />
-            <span>{tab.label}</span>
+            <tab.icon className="w-3.5 h-3.5 shrink-0 pointer-events-none select-none" />
+            <span className="select-none pointer-events-none">{tab.label}</span>
           </button>
         ))}
       </div>
