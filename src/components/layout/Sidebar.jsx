@@ -18,6 +18,7 @@ import {
   Settings
 } from 'lucide-react';
 import { useFleet } from '../../context/FleetContext';
+import { ISTClock } from '../common/ISTClock';
 
 export const Sidebar = ({ isOpen, onClose }) => {
   const {
@@ -195,8 +196,11 @@ export const Sidebar = ({ isOpen, onClose }) => {
           </div>
         </nav>
 
-        {/* Sidebar Footer: National Logistics Gateway & Compliance Center */}
-        <div className="p-3 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950/40 space-y-2">
+        {/* Sidebar Footer: Live Clock + National Logistics Gateway */}
+        <div className="p-3 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950/40 space-y-2.5">
+          {/* Live Indian Standard Time (IST) Clock Widget */}
+          <ISTClock />
+
           {/* Interactive National Gateway Status Card */}
           <button
             type="button"
