@@ -17,38 +17,48 @@ const DEFAULT_USER = {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
     try {
-      const savedUser = localStorage.getItem('bharatlogix_auth_user_v1');
-      return savedUser ? { ...DEFAULT_USER, ...JSON.parse(savedUser) } : DEFAULT_USER;
+      const session = sessionStorage.getItem('bharatlogix_session_auth');
+      const remembered = localStorage.getItem('bharatlogix_remember_auth');
+      if (session === 'true' || remembered === 'true') {
+        return true;
+      }
+      // Clear legacy flags that auto-logged in by default
+      localStorage.removeItem('bharatlogix_is_authenticated');
+      return false;
     } catch {
-      return DEFAULT_USER;
+      return false;
     }
   });
 
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+  const [user, setUser] = useState(() => {
     try {
-      const auth = localStorage.getItem('bharatlogix_is_authenticated');
-      return auth !== null ? JSON.parse(auth) : true; // Default true so user can immediately browse or test logout
+      const session = sessionStorage.getItem('bharatlogix_session_auth');
+      const remembered = localStorage.getItem('bharatlogix_remember_auth');
+      if (session === 'true' || remembered === 'true') {
+        const savedUser = localStorage.getItem('bharatlogix_auth_user_v1');
+        return savedUser ? { ...DEFAULT_USER, ...JSON.parse(savedUser) } : DEFAULT_USER;
+      }
+      return null;
     } catch {
-      return true;
+      return null;
     }
   });
 
   useEffect(() => {
     try {
-      if (user) {
+      if (isAuthenticated && user) {
         localStorage.setItem('bharatlogix_auth_user_v1', JSON.stringify(user));
       } else {
         localStorage.removeItem('bharatlogix_auth_user_v1');
       }
-      localStorage.setItem('bharatlogix_is_authenticated', JSON.stringify(isAuthenticated));
     } catch (e) {
       console.warn('Error saving auth to storage:', e);
     }
   }, [user, isAuthenticated]);
 
-  const login = async (email, password) => {
+  const login = async (email, password, remember = false) => {
     // Simulated network authentication
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -72,6 +82,12 @@ export const AuthProvider = ({ children }) => {
 
         setUser(authenticatedUser);
         setIsAuthenticated(true);
+
+        if (remember) {
+          localStorage.setItem('bharatlogix_remember_auth', 'true');
+        } else {
+          sessionStorage.setItem('bharatlogix_session_auth', 'true');
+        }
         resolve(authenticatedUser);
       }, 400);
     });
@@ -99,6 +115,7 @@ export const AuthProvider = ({ children }) => {
 
         setUser(newUser);
         setIsAuthenticated(true);
+        sessionStorage.setItem('bharatlogix_session_auth', 'true');
         resolve(newUser);
       }, 500);
     });
@@ -129,7 +146,9 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     try {
       localStorage.removeItem('bharatlogix_auth_user_v1');
-      localStorage.setItem('bharatlogix_is_authenticated', 'false');
+      localStorage.removeItem('bharatlogix_is_authenticated');
+      localStorage.removeItem('bharatlogix_remember_auth');
+      sessionStorage.removeItem('bharatlogix_session_auth');
     } catch (e) {
       console.warn(e);
     }

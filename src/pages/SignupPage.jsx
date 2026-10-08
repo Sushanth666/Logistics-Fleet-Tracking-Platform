@@ -21,9 +21,15 @@ import {
 } from 'lucide-react';
 
 export const SignupPage = () => {
-  const { signup } = useAuth();
+  const { signup, isAuthenticated } = useAuth();
   const { isDark } = useTheme();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const [formData, setFormData] = useState({
     name: '',

@@ -17,9 +17,15 @@ import {
 } from 'lucide-react';
 
 export const LoginPage = () => {
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const { isDark } = useTheme();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,7 +49,7 @@ export const LoginPage = () => {
 
     setLoading(true);
     try {
-      await login(email, password);
+      await login(email, password, rememberMe);
       navigate('/');
     } catch (err) {
       setError(err.message || 'Invalid credentials.');
