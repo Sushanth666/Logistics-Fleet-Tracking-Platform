@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { ThemeToggle } from '../components/layout/ThemeToggle';
@@ -52,25 +52,26 @@ export const LoginPage = () => {
     }
   };
 
-  // Ensure smooth, unrestricted window scrolling
-  useEffect(() => {
-    document.documentElement.style.overflowY = 'auto';
-    document.body.style.overflowY = 'auto';
-    return () => {
-      document.documentElement.style.overflowY = '';
-      document.body.style.overflowY = '';
-    };
-  }, []);
+  const rightPaneRef = useRef(null);
+
+  const handleLeftWheel = (e) => {
+    if (rightPaneRef.current) {
+      rightPaneRef.current.scrollTop += e.deltaY;
+    }
+  };
 
   return (
-    <div className="relative min-h-screen w-full bg-slate-900 text-slate-100 flex flex-col lg:flex-row transition-colors duration-300">
+    <div className="relative min-h-screen lg:h-screen w-full bg-slate-900 text-slate-100 flex flex-col lg:flex-row transition-colors duration-300 overflow-y-auto lg:overflow-hidden">
       {/* FLOATING THEME TOGGLE BUTTON */}
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
 
-      {/* LEFT 6 COLS: High-Impact Visual Showcase */}
-      <div className="lg:w-1/2 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-10 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative lg:min-h-screen lg:sticky lg:top-0 shrink-0">
+      {/* LEFT 6 COLS: High-Impact Visual Showcase (Fixed & locked on desktop) */}
+      <div
+        onWheel={handleLeftWheel}
+        className="lg:w-1/2 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-10 lg:p-16 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative lg:h-screen shrink-0 lg:overflow-hidden select-none"
+      >
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
           
@@ -165,8 +166,12 @@ export const LoginPage = () => {
           </div>
         </div>
 
-        {/* RIGHT 6 COLS: Rich Studio Auth Form with Signature Image 4 Design */}
-        <div id="login-form" className="w-full lg:w-1/2 bg-slate-50 dark:bg-slate-950 px-4 py-8 sm:px-10 lg:px-14 flex flex-col justify-center items-center relative transition-colors duration-300 scroll-mt-4 min-h-screen">
+        {/* RIGHT 6 COLS: Scrollable Auth Form (Only right side scrolls) */}
+        <div
+          ref={rightPaneRef}
+          id="login-form"
+          className="w-full lg:w-1/2 lg:h-screen lg:overflow-y-auto bg-slate-50 dark:bg-slate-950 px-4 py-8 sm:px-10 lg:px-14 flex flex-col justify-center items-center relative transition-colors duration-300 scroll-mt-4"
+        >
           <div className="w-full max-w-md group relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xl p-7 sm:p-8 space-y-6 my-auto">
             {/* Top Radiant Highlight Bar — clipped with rounded-t-3xl on its own div */}
             <div className="absolute top-0 left-0 right-0 h-2 rounded-t-3xl overflow-hidden">
