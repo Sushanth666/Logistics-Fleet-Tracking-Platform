@@ -134,6 +134,9 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 to={item.path}
                 onClick={() => {
                   if (window.innerWidth < 1024) onClose();
+                  const mainEl = document.querySelector('main');
+                  if (mainEl) mainEl.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                 }}
                 className={({ isActive }) =>
                   `group flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all ${
@@ -171,6 +174,9 @@ export const Sidebar = ({ isOpen, onClose }) => {
                 to={item.path}
                 onClick={() => {
                   if (window.innerWidth < 1024) onClose();
+                  const mainEl = document.querySelector('main');
+                  if (mainEl) mainEl.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                 }}
                 className={({ isActive }) =>
                   `group flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all ${

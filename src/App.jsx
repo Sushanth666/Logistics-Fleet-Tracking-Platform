@@ -16,10 +16,25 @@ import { AlertsPage } from './pages/AlertsPage';
 import { AnalyticsPage } from './pages/AnalyticsPage';
 import { OperatorProfilePage } from './pages/OperatorProfilePage';
 import { PlatformSettingsPage } from './pages/PlatformSettingsPage';
-import { useAnimatedTabTitle } from './hooks/useAnimatedTabTitle';
+import { useLocation } from 'react-router-dom';
 
 const TabTitleController = () => {
   useAnimatedTabTitle();
+  return null;
+};
+
+// Global route scroll listener: Ensures every page opens at the very top on mobile, tablet, and desktop
+const ScrollToTopOnNavigate = () => {
+  const { pathname } = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    const mainEl = document.querySelector('main');
+    if (mainEl) {
+      mainEl.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [pathname]);
+
   return null;
 };
 
@@ -30,6 +45,7 @@ function App() {
         <FleetProvider>
           <TabTitleController />
           <BrowserRouter>
+            <ScrollToTopOnNavigate />
             <Routes>
               {/* Public Authentication Routes */}
               <Route path="/login" element={<LoginPage />} />
