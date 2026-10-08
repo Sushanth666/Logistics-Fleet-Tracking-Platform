@@ -32,6 +32,7 @@ export const TrackingPage = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [mapStyle, setMapStyle] = useState('standard'); // 'standard' (Original Maps) | 'dark' (Night Ops)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [mobileTab, setMobileTab] = useState('map'); // 'map' | 'vehicles'
 
   // Filtered vehicles for sidebar list
   const filteredVehicles = useMemo(() => {
@@ -61,17 +62,17 @@ export const TrackingPage = () => {
   return (
     <div className="space-y-4 animate-in fade-in duration-300">
       {/* Top Controls Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl shadow-xl backdrop-blur-md">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 p-3.5 sm:p-4 rounded-2xl shadow-xl backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-purple-100 text-purple-700 border border-purple-200 dark:bg-purple-500/10 dark:border-purple-500/20 dark:text-purple-400">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-purple-100 text-purple-700 border border-purple-200 dark:bg-purple-500/10 dark:border-purple-500/20 dark:text-purple-400 shrink-0">
             <Radio className="w-5 h-5 animate-pulse" />
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+          <div className="min-w-0">
+            <h1 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2 truncate">
               🇮🇳 Pan-India GPS Telematics & Corridor Radar
             </h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2 flex-wrap mt-0.5">
-              <span>National Highway corridors, dedicated freight routes, & real-time on-board telemetry</span>
+            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2 flex-wrap mt-0.5">
+              <span>National Highway corridors, freight routes & telemetry</span>
               <span className="hidden md:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800">
                 Golden Quadrilateral Live
               </span>
@@ -79,35 +80,63 @@ export const TrackingPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2">
           {/* Map style toggle */}
           <button
             onClick={() => setMapStyle(prev => prev === 'dark' ? 'standard' : 'dark')}
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
           >
             <Layers className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-            <span>Map: {mapStyle === 'dark' ? 'Night Ops' : 'Original OpenStreetMap'}</span>
+            <span>Map: {mapStyle === 'dark' ? 'Night Ops' : 'Street'}</span>
           </button>
 
           {/* Simulation Toggle */}
           <button
             onClick={toggleSimulation}
-            className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               isSimulationActive
                 ? 'bg-emerald-100 text-emerald-800 border border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:border-emerald-500/30'
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
             }`}
           >
             {isSimulationActive ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span>GPS Simulation: {isSimulationActive ? 'STREAMING' : 'PAUSED'}</span>
+            <span>GPS: {isSimulationActive ? 'STREAMING' : 'PAUSED'}</span>
           </button>
         </div>
       </div>
 
+      {/* Mobile Segmented View Switcher */}
+      <div className="flex lg:hidden items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-sm">
+        <button
+          onClick={() => setMobileTab('map')}
+          className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+            mobileTab === 'map'
+              ? 'bg-white dark:bg-slate-900 text-purple-700 dark:text-purple-300 shadow-md shadow-purple-500/10'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+          }`}
+        >
+          <Radio className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+          <span>Live Radar Map</span>
+        </button>
+        <button
+          onClick={() => setMobileTab('vehicles')}
+          className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+            mobileTab === 'vehicles'
+              ? 'bg-white dark:bg-slate-900 text-purple-700 dark:text-purple-300 shadow-md shadow-purple-500/10'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+          }`}
+        >
+          <Truck className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+          <span>Fleet Vehicles ({filteredVehicles.length})</span>
+        </button>
+      </div>
+
       {/* Main Map & Interactive Sidebar Layout */}
-      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-4 h-[720px]">
-        {/* Vehicles Selection Sidebar (4 cols on desktop) */}
-        <div className="lg:col-span-4 h-full flex flex-col bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden backdrop-blur-md">
+      <div className="relative flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:h-[720px]">
+        {/* Vehicles Selection Sidebar (4 cols on desktop, tabbed on mobile) */}
+        <div className={`lg:col-span-4 h-[560px] lg:h-full flex-col bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden backdrop-blur-md ${
+          mobileTab === 'vehicles' ? 'flex' : 'hidden lg:flex'
+        }`}>
           {/* Search & Filter Header */}
           <div className="p-3.5 border-b border-slate-200 dark:border-slate-800 space-y-2.5 bg-slate-50/70 dark:bg-slate-950/60">
             <div className="relative">
@@ -130,7 +159,7 @@ export const TrackingPage = () => {
             </div>
 
             {/* Status Filter Pills */}
-            <div className="flex items-center gap-1.5 overflow-x-auto overscroll-contain pb-1 text-xs">
+            <div className="flex items-center gap-1.5 overflow-x-auto overscroll-contain pb-1 text-xs no-scrollbar">
               {['all', 'in-transit', 'idle', 'maintenance'].map(statusKey => (
                 <button
                   key={statusKey}
@@ -160,7 +189,10 @@ export const TrackingPage = () => {
                 return (
                   <div
                     key={vehicle.id}
-                    onClick={() => setSelectedVehicleId(vehicle.id)}
+                    onClick={() => {
+                      setSelectedVehicleId(vehicle.id);
+                      setMobileTab('map');
+                    }}
                     className={`p-3 rounded-xl transition-all cursor-pointer border ${
                       isSelected
                         ? 'bg-purple-50/80 dark:bg-purple-950/40 border-purple-300 dark:border-purple-500/50 shadow-md ring-1 ring-purple-300 dark:ring-purple-500/30'
@@ -200,9 +232,11 @@ export const TrackingPage = () => {
           </div>
         </div>
 
-        {/* Map Container + HUD Overlay (8 cols on desktop) */}
-        <div className="lg:col-span-8 h-full flex flex-col gap-4 relative">
-          <div className="flex-1 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl relative">
+        {/* Map Container + HUD Overlay (8 cols on desktop, tabbed on mobile) */}
+        <div className={`lg:col-span-8 flex-col gap-4 relative lg:h-full ${
+          mobileTab === 'map' ? 'flex' : 'hidden lg:flex'
+        }`}>
+          <div className="h-[420px] sm:h-[480px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl relative min-h-[380px]">
             <FleetMap
               vehicles={filteredVehicles}
               shipments={shipments}

@@ -75,6 +75,23 @@ const MapController = ({ selectedVehicle, activeRegion }) => {
     }
   }, [activeRegion, map]);
 
+  useEffect(() => {
+    // Invalidate size on mount and window resize for flawless mobile rendering
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+
+    const handleResize = () => {
+      map.invalidateSize();
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [map]);
+
   return null;
 };
 
@@ -178,12 +195,12 @@ const FleetMapInner = ({
   return (
     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-950">
       {/* Floating Corridor Selector Controls */}
-      <div className="absolute top-3 left-3 z-[1000] flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-lg text-[11px]">
+      <div className="absolute top-2.5 left-2.5 right-2.5 sm:right-auto z-[1000] flex items-center gap-1.5 p-1.5 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-lg text-[11px] overflow-x-auto overscroll-contain no-scrollbar">
         {INDIA_CORRIDORS.map(c => (
           <button
             key={c.id}
             onClick={() => setActiveRegion(c.id)}
-            className={`px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer ${
+            className={`px-2.5 py-1 rounded-lg font-medium transition-all cursor-pointer shrink-0 whitespace-nowrap ${
               activeRegion === c.id
                 ? 'bg-purple-600 text-white shadow-sm font-semibold'
                 : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
