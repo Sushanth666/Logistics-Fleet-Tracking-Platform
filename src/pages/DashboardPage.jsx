@@ -94,7 +94,7 @@ export const DashboardPage = () => {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Top Welcome & Quick Actions Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-3xl shadow-xl transition-all duration-300 bg-gradient-to-r from-purple-50/90 via-white to-pink-50/80 dark:from-slate-900 dark:via-purple-950/40 dark:to-slate-900 border border-purple-100 dark:border-purple-900/40">
+      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 p-6 rounded-3xl shadow-xl transition-all duration-300 bg-gradient-to-r from-purple-50/90 via-white to-pink-50/80 dark:from-slate-900 dark:via-purple-950/40 dark:to-slate-900 border border-purple-100 dark:border-purple-900/40">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold border bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/30">
@@ -111,7 +111,7 @@ export const DashboardPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5 pt-1 xl:pt-0">
           <button
             onClick={() => setIsShipmentModalOpen(true)}
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-white font-semibold text-xs tracking-wide shadow-lg shadow-purple-600/25 hover:opacity-95 transition-all cursor-pointer bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600"
