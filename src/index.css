@@ -174,12 +174,6 @@ button.text-white span,
   color: #ffffff !important;
 }
 
-button span,
-[role="tab"] span,
-[role="button"] span {
-  background-color: transparent !important;
-}
-
 .user-avatar-badge {
   background-color: #7c3aed !important;
   color: #ffffff !important;

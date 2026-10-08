@@ -39,7 +39,7 @@ export const UserDropdown = () => {
       {/* Trigger Button — Sleek Executive Capsule Pill */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 p-1 lg:pl-1.5 lg:pr-3 rounded-full bg-slate-100/80 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/90 hover:border-purple-300 dark:border-slate-700/80 dark:hover:border-purple-500/40 shadow-2xs hover:shadow-xs transition-all duration-200 cursor-pointer group select-none"
+        className="flex items-center gap-2 p-1.5 lg:pl-1.5 lg:pr-3 rounded-full bg-slate-100/80 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/90 hover:border-purple-300 dark:border-slate-700/80 dark:hover:border-purple-500/40 shadow-2xs hover:shadow-xs transition-all duration-200 cursor-pointer group select-none"
         aria-label="User profile menu"
       >
         {/* Modern Circular Gradient Avatar with Embedded Duty Dot */}
@@ -55,15 +55,17 @@ export const UserDropdown = () => {
               {displayInitials}
             </div>
           </div>
-          {/* Duty Status Dot with Clean Ring */}
+          {/* Duty Status Dot with Clean Ring - perfectly aligned within avatar bounds */}
           <span
-            className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 shadow-xs transition-colors ${
-              dutyStatus === 'On Duty'
-                ? 'bg-emerald-500'
-                : dutyStatus === 'On Break'
-                ? 'bg-amber-400'
-                : 'bg-slate-400'
-            }`}
+            className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 shadow-xs transition-colors z-10"
+            style={{
+              backgroundColor:
+                dutyStatus === 'On Duty'
+                  ? '#10b981'
+                  : dutyStatus === 'On Break'
+                  ? '#f59e0b'
+                  : '#94a3b8'
+            }}
             title={`Duty Status: ${dutyStatus}`}
           />
         </div>
