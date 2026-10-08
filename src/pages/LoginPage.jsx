@@ -12,27 +12,9 @@ import {
   ArrowRight,
   ArrowDown,
   ShieldCheck,
-  Sparkles,
   Zap,
   Radio
 } from 'lucide-react';
-
-const DEMO_ROLES = [
-  {
-    name: "Akash Barik",
-    email: "akash.barik@bharatlogix.in",
-    role: "Fleet Operations Lead",
-    hub: "Mumbai Gateway Hub",
-    password: "FleetOps@2026"
-  },
-  {
-    name: "Priya Sharma",
-    email: "priya.sharma@bharatlogix.in",
-    role: "National Dispatch Director",
-    hub: "Delhi NCR Command",
-    password: "FleetOps@2026"
-  }
-];
 
 export const LoginPage = () => {
   const { login } = useAuth();
@@ -45,14 +27,6 @@ export const LoginPage = () => {
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [activeRoleIndex, setActiveRoleIndex] = useState(0);
-
-  const handleSelectRole = (role, index) => {
-    setActiveRoleIndex(index);
-    setEmail(role.email);
-    setPassword(role.password);
-    setError('');
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -217,49 +191,6 @@ export const LoginPage = () => {
               </div>
               <div className="p-2.5 rounded-2xl border bg-purple-100 text-purple-700 border-purple-200/90 shadow-sm dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/30 shrink-0">
                 <Truck className="w-5 h-5" />
-              </div>
-            </div>
-
-            {/* 1-Click Demo Profiles Card with Image 4 styling */}
-            <div className="relative overflow-hidden p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 space-y-2.5">
-              <div className="flex items-center justify-between text-[11px]">
-                <span className="font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                  1-Click Demo Dispatcher:
-                </span>
-                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-100 dark:bg-emerald-500/20 px-2 py-0.5 rounded-full">
-                  Instant Fill
-                </span>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                {DEMO_ROLES.map((r, idx) => {
-                  const isSelected = activeRoleIndex === idx;
-                  const initials = r.name.split(' ').map(n => n[0]).join('');
-                  return (
-                    <button
-                      key={r.email}
-                      type="button"
-                      onClick={() => handleSelectRole(r, idx)}
-                      className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer flex items-center gap-2.5 ${
-                        isSelected
-                          ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold border-transparent shadow-md shadow-purple-600/30'
-                          : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-purple-600/50'
-                      }`}
-                    >
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
-                        isSelected ? 'bg-white/20 text-white' : 'bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300'
-                      }`}>
-                        {initials}
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-bold text-xs truncate">{r.name}</p>
-                        <p className={`text-[10px] truncate ${isSelected ? 'text-purple-100' : 'text-slate-500 dark:text-slate-400'}`}>
-                          {r.role.split(' ')[0]}
-                        </p>
-                      </div>
-                    </button>
-                  );
-                })}
               </div>
             </div>
 
