@@ -75,16 +75,7 @@ export const UserDropdown = () => {
               {displayName}
             </span>
           </div>
-          <div className="flex items-center gap-1.5 mt-0.5 leading-none">
-            <span
-              className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                dutyStatus === 'On Duty'
-                  ? 'bg-emerald-500 animate-pulse'
-                  : dutyStatus === 'On Break'
-                  ? 'bg-amber-400'
-                  : 'bg-slate-400'
-              }`}
-            />
+          <div className="mt-0.5 leading-none">
             <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 truncate">
               {displayRole}
             </span>
