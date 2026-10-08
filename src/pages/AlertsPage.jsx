@@ -120,7 +120,7 @@ export const AlertsPage = () => {
       </div>
 
       {/* Cyber Command Center Incident Metrics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-3 lg:gap-3.5 xl:gap-4">
         {/* Card 1: Active Incidents */}
         <div
           onClick={() => {
@@ -128,7 +128,7 @@ export const AlertsPage = () => {
             setSeverityFilter('all');
             setOnlyUnread(false);
           }}
-          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 ${
+          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-3.5 sm:p-4 md:p-3.5 lg:p-4 xl:p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1 flex flex-col justify-between h-full ${
             severityFilter === 'all' && !onlyUnread
               ? 'border-purple-500 ring-2 ring-purple-500/30 dark:ring-purple-500/40'
               : 'border-slate-200/90 dark:border-slate-800 hover:border-purple-300 dark:hover:border-purple-500/50'
@@ -138,41 +138,43 @@ export const AlertsPage = () => {
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 opacity-90 group-hover:h-2 transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500/8 via-fuchsia-500/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          <div className="relative z-10 flex items-start justify-between gap-3">
-            <div className="space-y-1.5 flex-1">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2.5 w-2.5">
+          <div className="relative z-10 flex flex-col justify-between h-full space-y-2">
+            <div className="flex items-start justify-between gap-1.5 md:gap-2">
+              <div className="flex items-center gap-1.5 flex-1 min-h-[2.25rem] md:min-h-[2.5rem]">
+                <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500" />
                 </span>
-                <p className="text-[11px] font-black uppercase tracking-wider text-purple-700 dark:text-purple-300">
+                <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[10.5px] xl:text-[11px] font-black uppercase tracking-wider text-purple-700 dark:text-purple-300 leading-snug line-clamp-2">
                   Active Incidents
                 </p>
               </div>
 
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-fuchsia-600 transition-colors">
-                  <AnimatedNumber value={alerts.length} duration={1100} />
-                </span>
-                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Telemetry</span>
+              <div className="p-2 sm:p-2 md:p-2 lg:p-2.5 xl:p-3 rounded-xl xl:rounded-2xl bg-purple-100 text-purple-700 border border-purple-200/90 shadow-sm shadow-purple-500/20 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shrink-0">
+                <Activity className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-4 md:h-4 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5" />
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-purple-100 text-purple-700 border border-purple-200/90 shadow-sm shadow-purple-500/20 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              <Activity className="w-5 h-5" />
+            <div className="flex items-center justify-between gap-1.5 min-h-[2.25rem] md:min-h-[2.5rem]">
+              <span className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-fuchsia-600 transition-colors shrink-0">
+                <AnimatedNumber value={alerts.length} duration={1100} />
+              </span>
+              <span className="text-[10px] md:text-[10px] lg:text-[11px] font-semibold text-slate-500 dark:text-slate-400 shrink-0">
+                Total Telemetry
+              </span>
             </div>
-          </div>
 
-          <div className="relative z-10 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-1.5 flex-wrap text-[10px]">
-            <span className="px-2 py-0.5 rounded-md font-bold bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300 border border-rose-200/60 dark:border-rose-900/40">
-              {criticalCount} Critical
-            </span>
-            <span className="px-2 py-0.5 rounded-md font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 border border-amber-200/60 dark:border-amber-900/40">
-              {warningCount} Warning
-            </span>
-            <span className="px-2 py-0.5 rounded-md font-bold bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40">
-              {infoCount} Info
-            </span>
+            <div className="relative z-10 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1 min-h-[2rem] md:min-h-[2.25rem] text-[9.5px] sm:text-[10px]">
+              <span className="px-1.5 py-0.5 rounded-md font-bold bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300 border border-rose-200/60 dark:border-rose-900/40 shrink-0 whitespace-nowrap">
+                {criticalCount} Critical
+              </span>
+              <span className="px-1.5 py-0.5 rounded-md font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 border border-amber-200/60 dark:border-amber-900/40 shrink-0 whitespace-nowrap">
+                {warningCount} Warning
+              </span>
+              <span className="px-1.5 py-0.5 rounded-md font-bold bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40 shrink-0 whitespace-nowrap">
+                {infoCount} Info
+              </span>
+            </div>
           </div>
         </div>
 
@@ -182,7 +184,7 @@ export const AlertsPage = () => {
             setSeverityFilter('critical');
             setOnlyUnread(false);
           }}
-          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-rose-500/15 hover:-translate-y-1 ${
+          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-3.5 sm:p-4 md:p-3.5 lg:p-4 xl:p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-rose-500/15 hover:-translate-y-1 flex flex-col justify-between h-full ${
             severityFilter === 'critical'
               ? 'border-rose-500 ring-2 ring-rose-500/30 dark:ring-rose-500/40'
               : 'border-slate-200/90 dark:border-slate-800 hover:border-rose-300 dark:hover:border-rose-500/50'
@@ -191,44 +193,48 @@ export const AlertsPage = () => {
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-rose-500 via-pink-500 to-red-500 opacity-90 group-hover:h-2 transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-br from-rose-500/8 via-pink-500/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          <div className="relative z-10 flex items-start justify-between gap-3">
-            <div className="space-y-1.5 flex-1">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2.5 w-2.5">
+          <div className="relative z-10 flex flex-col justify-between h-full space-y-2">
+            <div className="flex items-start justify-between gap-1.5 md:gap-2">
+              <div className="flex items-center gap-1.5 flex-1 min-h-[2.25rem] md:min-h-[2.5rem]">
+                <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-90" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500" />
                 </span>
-                <p className="text-[11px] font-black uppercase tracking-wider text-rose-700 dark:text-rose-400">
+                <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[10.5px] xl:text-[11px] font-black uppercase tracking-wider text-rose-700 dark:text-rose-400 leading-snug line-clamp-2">
                   Critical Priority
                 </p>
               </div>
 
-              <div className="flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-black text-rose-600 dark:text-rose-400 tracking-tight">
-                  <AnimatedNumber value={criticalCount} duration={1100} />
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-rose-100 text-rose-800 dark:bg-rose-500/20 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30 animate-pulse">
-                  Immediate SLA
-                </span>
+              <div className="relative shrink-0">
+                <div className="p-2 sm:p-2 md:p-2 lg:p-2.5 xl:p-3 rounded-xl xl:rounded-2xl bg-rose-100 text-rose-800 border border-rose-200/90 shadow-sm shadow-rose-500/20 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <Flame className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-4 md:h-4 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 text-rose-600 dark:text-rose-400" />
+                </div>
+                {criticalCount > 0 && (
+                  <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500" />
+                  </span>
+                )}
               </div>
             </div>
 
-            <div className="relative shrink-0">
-              <div className="p-3 rounded-2xl bg-rose-100 text-rose-800 border border-rose-200/90 shadow-sm shadow-rose-500/20 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Flame className="w-5 h-5 text-rose-600 dark:text-rose-400" />
-              </div>
-              {criticalCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500" />
-                </span>
-              )}
+            <div className="flex items-center justify-between gap-1.5 min-h-[2.25rem] md:min-h-[2.5rem]">
+              <span className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl font-black text-rose-600 dark:text-rose-400 tracking-tight shrink-0">
+                <AnimatedNumber value={criticalCount} duration={1100} />
+              </span>
+              <span className="inline-flex items-center gap-1 px-1.5 md:px-1.5 lg:px-2 py-0.5 rounded-full text-[9px] sm:text-[9.5px] md:text-[9.5px] lg:text-[10px] font-extrabold uppercase bg-rose-100 text-rose-800 dark:bg-rose-500/20 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30 animate-pulse shrink-0 whitespace-nowrap">
+                Immediate SLA
+              </span>
             </div>
-          </div>
 
-          <div className="relative z-10 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px]">
-            <span className="text-slate-600 dark:text-slate-400 font-medium">Requires instant dispatch</span>
-            <span className="font-mono text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase">P1 Urgent</span>
+            <div className="relative z-10 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1 min-h-[2rem] md:min-h-[2.25rem] text-[10.5px] md:text-[10px] lg:text-[11px]">
+              <span className="text-slate-600 dark:text-slate-400 font-medium truncate flex-1 min-w-0 mr-1">
+                Requires instant dispatch
+              </span>
+              <span className="font-mono text-[9px] md:text-[9px] lg:text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase px-1.5 py-0.5 rounded bg-rose-50 dark:bg-rose-950/40 border border-rose-200/60 dark:border-rose-900/40 shrink-0 whitespace-nowrap">
+                P1 Urgent
+              </span>
+            </div>
           </div>
         </div>
 
@@ -238,7 +244,7 @@ export const AlertsPage = () => {
             setSeverityFilter('warning');
             setOnlyUnread(false);
           }}
-          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-amber-500/15 hover:-translate-y-1 ${
+          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-3.5 sm:p-4 md:p-3.5 lg:p-4 xl:p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-amber-500/15 hover:-translate-y-1 flex flex-col justify-between h-full ${
             severityFilter === 'warning'
               ? 'border-amber-500 ring-2 ring-amber-500/30 dark:ring-amber-500/40'
               : 'border-slate-200/90 dark:border-slate-800 hover:border-amber-300 dark:hover:border-amber-500/50'
@@ -247,36 +253,40 @@ export const AlertsPage = () => {
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-400 opacity-90 group-hover:h-2 transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-br from-amber-500/8 via-orange-500/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          <div className="relative z-10 flex items-start justify-between gap-3">
-            <div className="space-y-1.5 flex-1">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2.5 w-2.5">
+          <div className="relative z-10 flex flex-col justify-between h-full space-y-2">
+            <div className="flex items-start justify-between gap-1.5 md:gap-2">
+              <div className="flex items-center gap-1.5 flex-1 min-h-[2.25rem] md:min-h-[2.5rem]">
+                <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
                 </span>
-                <p className="text-[11px] font-black uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[10.5px] xl:text-[11px] font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 leading-snug line-clamp-2">
                   Warning Advisories
                 </p>
               </div>
 
-              <div className="flex items-baseline gap-2">
-                <span className="text-3.5xl sm:text-4xl font-black text-amber-600 dark:text-amber-400 tracking-tight">
-                  <AnimatedNumber value={warningCount} duration={1100} />
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
-                  Threshold Watch
-                </span>
+              <div className="p-2 sm:p-2 md:p-2 lg:p-2.5 xl:p-3 rounded-xl xl:rounded-2xl bg-amber-100 text-amber-800 border border-amber-200/90 shadow-sm shadow-amber-500/20 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shrink-0">
+                <ShieldAlert className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-4 md:h-4 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 text-amber-600 dark:text-amber-400" />
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-amber-100 text-amber-800 border border-amber-200/90 shadow-sm shadow-amber-500/20 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              <ShieldAlert className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+            <div className="flex items-center justify-between gap-1.5 min-h-[2.25rem] md:min-h-[2.5rem]">
+              <span className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl font-black text-amber-600 dark:text-amber-400 tracking-tight shrink-0">
+                <AnimatedNumber value={warningCount} duration={1100} />
+              </span>
+              <span className="inline-flex items-center gap-1 px-1.5 md:px-1.5 lg:px-2 py-0.5 rounded-full text-[9px] sm:text-[9.5px] md:text-[9.5px] lg:text-[10px] font-bold uppercase bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30 shrink-0 whitespace-nowrap">
+                Threshold Watch
+              </span>
             </div>
-          </div>
 
-          <div className="relative z-10 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px]">
-            <span className="text-slate-600 dark:text-slate-400 font-medium">Telemetry threshold alerts</span>
-            <span className="font-mono text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">P2 Caution</span>
+            <div className="relative z-10 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1 min-h-[2rem] md:min-h-[2.25rem] text-[10.5px] md:text-[10px] lg:text-[11px]">
+              <span className="text-slate-600 dark:text-slate-400 font-medium truncate flex-1 min-w-0 mr-1">
+                Telemetry threshold alerts
+              </span>
+              <span className="font-mono text-[9px] md:text-[9px] lg:text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-950/40 border border-amber-200/60 dark:border-amber-900/40 shrink-0 whitespace-nowrap">
+                P2 Caution
+              </span>
+            </div>
           </div>
         </div>
 
@@ -286,7 +296,7 @@ export const AlertsPage = () => {
             setOnlyUnread(!onlyUnread);
             setSeverityFilter('all');
           }}
-          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-cyan-500/15 hover:-translate-y-1 ${
+          className={`group relative overflow-hidden rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-3.5 sm:p-4 md:p-3.5 lg:p-4 xl:p-5 border transition-all duration-300 ease-out cursor-pointer shadow-sm hover:shadow-xl hover:shadow-cyan-500/15 hover:-translate-y-1 flex flex-col justify-between h-full ${
             onlyUnread
               ? 'border-cyan-500 ring-2 ring-cyan-500/30 dark:ring-cyan-500/40'
               : 'border-slate-200/90 dark:border-slate-800 hover:border-cyan-300 dark:hover:border-cyan-500/50'
@@ -295,38 +305,40 @@ export const AlertsPage = () => {
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-400 opacity-90 group-hover:h-2 transition-all duration-300" />
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/8 via-blue-500/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          <div className="relative z-10 flex items-start justify-between gap-3">
-            <div className="space-y-1.5 flex-1">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2.5 w-2.5">
+          <div className="relative z-10 flex flex-col justify-between h-full space-y-2">
+            <div className="flex items-start justify-between gap-1.5 md:gap-2">
+              <div className="flex items-center gap-1.5 flex-1 min-h-[2.25rem] md:min-h-[2.5rem]">
+                <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
                 </span>
-                <p className="text-[11px] font-black uppercase tracking-wider text-cyan-700 dark:text-cyan-400">
+                <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[10.5px] xl:text-[11px] font-black uppercase tracking-wider text-cyan-700 dark:text-cyan-400 leading-snug line-clamp-2">
                   Unread Items
                 </p>
               </div>
 
-              <div className="flex items-baseline gap-2">
-                <span className="text-3.5xl sm:text-4xl font-black text-cyan-600 dark:text-cyan-400 tracking-tight">
-                  <AnimatedNumber value={unreadCount} duration={1100} />
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-cyan-100 text-cyan-800 dark:bg-cyan-500/20 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/30">
-                  Action Queue
-                </span>
+              <div className="p-2 sm:p-2 md:p-2 lg:p-2.5 xl:p-3 rounded-xl xl:rounded-2xl bg-cyan-100 text-cyan-800 border border-cyan-200/90 shadow-sm shadow-cyan-500/20 dark:bg-cyan-500/20 dark:text-cyan-300 dark:border-cyan-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shrink-0">
+                <Bell className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-4 md:h-4 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 text-cyan-600 dark:text-cyan-400" />
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-cyan-100 text-cyan-800 border border-cyan-200/90 shadow-sm shadow-cyan-500/20 dark:bg-cyan-500/20 dark:text-cyan-300 dark:border-cyan-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              <Bell className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+            <div className="flex items-center justify-between gap-1.5 min-h-[2.25rem] md:min-h-[2.5rem]">
+              <span className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl font-black text-cyan-600 dark:text-cyan-400 tracking-tight shrink-0">
+                <AnimatedNumber value={unreadCount} duration={1100} />
+              </span>
+              <span className="inline-flex items-center gap-1 px-1.5 md:px-1.5 lg:px-2 py-0.5 rounded-full text-[9px] sm:text-[9.5px] md:text-[9.5px] lg:text-[10px] font-bold uppercase bg-cyan-100 text-cyan-800 dark:bg-cyan-500/20 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/30 shrink-0 whitespace-nowrap">
+                Action Queue
+              </span>
             </div>
-          </div>
 
-          <div className="relative z-10 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px]">
-            <span className="text-slate-600 dark:text-slate-400 font-medium">Pending operator review</span>
-            <span className="font-mono text-[10px] font-bold text-cyan-600 dark:text-cyan-400 uppercase">
-              {unreadCount > 0 ? `${unreadCount} New` : 'All Clear'}
-            </span>
+            <div className="relative z-10 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-1 min-h-[2rem] md:min-h-[2.25rem] text-[10.5px] md:text-[10px] lg:text-[11px]">
+              <span className="text-slate-600 dark:text-slate-400 font-medium truncate flex-1 min-w-0 mr-1">
+                Pending operator review
+              </span>
+              <span className="font-mono text-[9px] md:text-[9px] lg:text-[10px] font-bold text-cyan-600 dark:text-cyan-400 uppercase px-1.5 py-0.5 rounded bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200/60 dark:border-cyan-900/40 shrink-0 whitespace-nowrap">
+                {unreadCount > 0 ? `${unreadCount} New` : 'All Clear'}
+              </span>
+            </div>
           </div>
         </div>
       </div>

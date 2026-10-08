@@ -171,7 +171,7 @@ export const StatCard = ({
   return (
     <div
       onClick={onClick}
-      className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 p-5 border border-slate-200/80 dark:border-slate-800 transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1.5 ${scheme.hoverBorder} ${scheme.hoverShadow} ${onClick ? 'cursor-pointer' : ''}`}
+      className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 p-3.5 sm:p-4 md:p-3.5 lg:p-4 xl:p-5 border border-slate-200/80 dark:border-slate-800 transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1.5 flex flex-col justify-between h-full ${scheme.hoverBorder} ${scheme.hoverShadow} ${onClick ? 'cursor-pointer' : ''}`}
     >
       {/* Top Radiant Highlight Bar with Animation on Hover */}
       <div className={`absolute top-0 left-0 right-0 h-1.5 ${scheme.topBar} opacity-85 group-hover:opacity-100 group-hover:h-2 transition-all duration-300`} />
@@ -179,66 +179,69 @@ export const StatCard = ({
       {/* Ambient background glow on hover */}
       <div className={`absolute inset-0 bg-gradient-to-br ${scheme.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
 
-      <div className="relative z-10 flex items-start justify-between gap-3">
-        <div className="space-y-2">
-          {/* Header Title with subtle tracking */}
-          <div className="flex items-center gap-1.5">
-            <span className={`w-1.5 h-1.5 rounded-full ${scheme.beacon} opacity-70 group-hover:opacity-100 transition-opacity`} />
-            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+      <div className="relative z-10 flex flex-col justify-between h-full space-y-2">
+        {/* Top Header Row: Title on Left, Icon on Right */}
+        <div className="flex items-start justify-between gap-1.5 md:gap-2">
+          {/* Header Title with consistent vertical height for perfect baseline alignment across sibling cards */}
+          <div className="flex items-start gap-1.5 flex-1 min-h-[2.25rem] md:min-h-[2.5rem] pt-0.5">
+            <span className={`w-1.5 h-1.5 rounded-full ${scheme.beacon} opacity-70 group-hover:opacity-100 transition-opacity mt-1 shrink-0`} />
+            <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[10.5px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 leading-snug line-clamp-2">
               {title}
             </p>
           </div>
 
-          {/* Metric Value with Smooth Number Running Animation & Trend Badge */}
-          <div className="flex flex-wrap items-baseline gap-2.5">
-            <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-purple-800 dark:group-hover:from-white dark:group-hover:to-purple-200 transition-colors">
-              <AnimatedNumber value={value} duration={1100} />
-            </span>
-
-            {change !== undefined && (
-              <span
-                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold border transition-transform duration-300 group-hover:scale-105 ${
-                  isPositive
-                    ? 'bg-emerald-100 text-emerald-800 border-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30'
-                    : 'bg-rose-100 text-rose-800 border-rose-200 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30 animate-pulse'
-                }`}
+          {/* Action / Telematics Icon with Micro-Animation on Hover */}
+          {Icon && (
+            <div className="relative shrink-0">
+              <div
+                className={`p-2 sm:p-2 md:p-2 lg:p-2.5 xl:p-3 rounded-xl xl:rounded-2xl border transition-all duration-300 ${scheme.iconBox} group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-md`}
               >
-                {isPositive ? (
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                ) : (
-                  <ArrowDownRight className="w-3.5 h-3.5" />
-                )}
-                <AnimatedNumber value={change} duration={1100} />
-              </span>
-            )}
-          </div>
+                <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-4 md:h-4 lg:w-4.5 lg:h-4.5 xl:w-6 xl:h-6 transition-transform duration-300" />
+              </div>
 
-          {/* Subtext with high-contrast text & animated number */}
+              {/* Extra Pulsing Dot for Alert Cards */}
+              {!isPositive && (
+                <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500" />
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Middle Metric Value & Trend Badge Row: Perfectly centered and non-wrapping */}
+        <div className="flex items-center justify-between gap-1.5 min-h-[2.25rem] md:min-h-[2.5rem]">
+          <span className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-purple-800 dark:group-hover:from-white dark:group-hover:to-purple-200 transition-colors shrink-0">
+            <AnimatedNumber value={value} duration={1100} />
+          </span>
+
+          {change !== undefined && (
+            <span
+              className={`inline-flex items-center gap-1 px-1.5 md:px-1.5 lg:px-2 py-0.5 rounded-full text-[9px] sm:text-[9.5px] md:text-[9.5px] lg:text-[10.5px] xl:text-[11px] font-bold border transition-transform duration-300 group-hover:scale-105 shrink-0 whitespace-nowrap ${
+                isPositive
+                  ? 'bg-emerald-100 text-emerald-800 border-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30'
+                  : 'bg-rose-100 text-rose-800 border-rose-200 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30 animate-pulse'
+              }`}
+            >
+              {isPositive ? (
+                <ArrowUpRight className="w-3 h-3 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 shrink-0" />
+              ) : (
+                <ArrowDownRight className="w-3 h-3 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 shrink-0" />
+              )}
+              <AnimatedNumber value={change} duration={1100} />
+            </span>
+          )}
+        </div>
+
+        {/* Bottom Subtext Row: Aligned baseline across all cards */}
+        <div className="min-h-[1.75rem] md:min-h-[2rem] flex items-center pt-1 border-t border-slate-100 dark:border-slate-800/80">
           {subtext && (
-            <p className="text-xs font-medium text-slate-600 dark:text-slate-400">
+            <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[11px] xl:text-xs font-medium text-slate-600 dark:text-slate-400 leading-tight line-clamp-2">
               <AnimatedSubtext text={subtext} duration={1000} />
             </p>
           )}
         </div>
-
-        {/* Action / Telematics Icon with Micro-Animation on Hover */}
-        {Icon && (
-          <div className="relative shrink-0">
-            <div
-              className={`p-3 rounded-2xl border transition-all duration-300 ${scheme.iconBox} group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-md`}
-            >
-              <Icon className="w-6 h-6 transition-transform duration-300" />
-            </div>
-
-            {/* Extra Pulsing Dot for Alert Cards */}
-            {!isPositive && (
-              <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500" />
-              </span>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
