@@ -63,23 +63,23 @@
       <text x="144" font-size="42" font-weight="900" letter-spacing="-1" fill="url(#cyberViolet)">Logix</text>
 
       <!-- Indian Flag & National Node Badge -->
-      <g transform="translate(276, -28)">
-        <rect x="0" y="0" width="76" height="26" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1" />
+      <g transform="translate(272, -28)">
+        <rect x="0" y="0" width="78" height="26" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1" />
         <!-- Indian Flag -->
-        <g transform="translate(8, 6)">
-          <rect width="18" height="4.5" fill="#ff9933" rx="1" />
-          <rect y="4.5" width="18" height="4.5" fill="#ffffff" />
-          <rect y="9" width="18" height="4.5" fill="#128807" rx="1" />
-          <circle cx="9" cy="6.75" r="1.8" fill="#000088" />
+        <g transform="translate(8, 6.5)">
+          <rect width="18" height="4.3" fill="#ff9933" rx="0.8" />
+          <rect y="4.3" width="18" height="4.4" fill="#ffffff" />
+          <rect y="8.7" width="18" height="4.3" fill="#128807" rx="0.8" />
+          <circle cx="9" cy="6.5" r="1.8" fill="#000088" />
         </g>
-        <text x="32" y="17" font-size="11" font-weight="800" fill="#047857" letter-spacing="0.5">IND</text>
+        <text x="33" y="13" dominant-baseline="central" font-size="11" font-weight="800" fill="#047857" letter-spacing="0.5">IND</text>
       </g>
 
       <!-- AIS-140 Certified Pill -->
       <g transform="translate(360, -28)">
-        <rect x="0" y="0" width="112" height="26" rx="6" fill="#fdf4ff" stroke="#c026d3" stroke-width="1" />
-        <circle cx="12" cy="13" r="3.5" fill="#c026d3" />
-        <text x="22" y="17" font-size="10.5" font-weight="800" fill="#a21caf" letter-spacing="0.4">AIS-140 CERTIFIED</text>
+        <rect x="0" y="0" width="150" height="26" rx="6" fill="#fdf4ff" stroke="#c026d3" stroke-width="1" />
+        <circle cx="13" cy="13" r="3.2" fill="#c026d3" />
+        <text x="23" y="13" dominant-baseline="central" font-size="9" font-weight="800" fill="#a21caf" letter-spacing="0.4">AIS-140 CERTIFIED</text>
       </g>
     </g>
 
