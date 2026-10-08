@@ -17,6 +17,7 @@ import { AnalyticsPage } from './pages/AnalyticsPage';
 import { OperatorProfilePage } from './pages/OperatorProfilePage';
 import { PlatformSettingsPage } from './pages/PlatformSettingsPage';
 import { useLocation } from 'react-router-dom';
+import { useAnimatedTabTitle } from './hooks/useAnimatedTabTitle';
 
 const TabTitleController = () => {
   useAnimatedTabTitle();
