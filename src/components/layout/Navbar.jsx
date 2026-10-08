@@ -27,42 +27,53 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
     <>
       <header
         onDoubleClick={onScrollToTop}
-        className="sticky top-0 z-40 h-16 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 lg:px-8 flex items-center justify-between gap-3 transition-colors duration-300"
+        className="sticky top-0 z-40 h-16 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-3 transition-colors duration-300"
       >
-        {/* Left — Mobile Menu Toggle */}
-        <div className="flex items-center gap-3 shrink-0">
+        {/* Left — Mobile / Tablet Menu Toggle + Brand Logo */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={onOpenSidebar}
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800 lg:hidden cursor-pointer"
+            className="p-2 sm:p-2.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800 lg:hidden cursor-pointer transition-colors"
             aria-label="Open sidebar navigation"
           >
             <Menu className="w-5 h-5" />
           </button>
+
+          {/* Brand mark on Mobile & Tablet (when main sidebar is retracted/hidden) */}
+          <Link
+            to="/"
+            className="lg:hidden flex items-center gap-1.5 group select-none"
+          >
+            <span className="font-extrabold text-sm sm:text-base tracking-tight bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 bg-clip-text text-transparent">
+              BharatLogix
+            </span>
+          </Link>
         </div>
 
         {/* Center — Global Command & Omnisearch Bar (Ctrl+K) */}
-        <div className="flex-1 max-w-lg mx-2 lg:mx-6 hidden sm:block">
+        {/* Visible on tablet and desktop, responsively scaled so it never pushes controls off */}
+        <div className="flex-1 max-w-xs md:max-w-sm lg:max-w-lg min-w-0 mx-2 md:mx-4 lg:mx-6 hidden sm:block">
           <button
             onClick={() => setIsCommandOpen(true)}
-            className="w-full flex items-center justify-between px-3.5 py-2 rounded-2xl bg-slate-100/80 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/90 hover:border-purple-400 dark:border-slate-700/80 dark:hover:border-purple-500/60 shadow-xs hover:shadow-md transition-all cursor-pointer group text-left"
+            className="w-full flex items-center justify-between px-3 sm:px-3.5 py-2 rounded-2xl bg-slate-100/80 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/90 hover:border-purple-400 dark:border-slate-700/80 dark:hover:border-purple-500/60 shadow-xs hover:shadow-md transition-all cursor-pointer group text-left"
             title="Global Quick Search (Ctrl+K)"
           >
-            <div className="flex items-center gap-2.5 text-slate-500 dark:text-slate-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors min-w-0">
+            <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors min-w-0">
               <Search className="w-4 h-4 shrink-0" />
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 truncate">
-                Search fleet, shipments, drivers, corridors...
+                Search fleet, shipments, corridors...
               </span>
             </div>
 
-            <kbd className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-purple-400/50 transition-colors shrink-0">
+            <kbd className="hidden md:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-2xs group-hover:border-purple-400/50 transition-colors shrink-0">
               <span className="text-[11px]">Ctrl</span>K
             </kbd>
           </button>
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-2.5 shrink-0">
-          {/* Mobile Search Trigger Button */}
+        <div className="flex items-center gap-1 sm:gap-2 lg:gap-2.5 shrink-0">
+          {/* Mobile Quick Search Icon Trigger (Only on mobile <640px) */}
           <button
             onClick={() => setIsCommandOpen(true)}
             className="sm:hidden p-2 rounded-xl text-slate-500 hover:text-purple-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-purple-400 dark:hover:bg-slate-800 transition-colors cursor-pointer"
@@ -75,10 +86,10 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
           {/* Light / Dark Mode Toggle */}
           <ThemeToggle />
 
-          {/* Quick Link to Map Tracking (Symbol Icon) */}
+          {/* Quick Link to Map Tracking (Symbol Icon) - hidden on mobile, shown on tablet & desktop */}
           <Link
             to="/tracking"
-            className="relative p-2.5 rounded-xl border transition-all bg-purple-50 hover:bg-purple-100 dark:bg-purple-600/15 dark:hover:bg-purple-600/25 text-purple-700 dark:text-purple-300 border-purple-200/90 dark:border-purple-500/30 flex items-center justify-center cursor-pointer shadow-xs group"
+            className="hidden sm:inline-flex relative p-2.5 rounded-xl border transition-all bg-purple-50 hover:bg-purple-100 dark:bg-purple-600/15 dark:hover:bg-purple-600/25 text-purple-700 dark:text-purple-300 border-purple-200/90 dark:border-purple-500/30 items-center justify-center cursor-pointer shadow-xs group shrink-0"
             title="Live GPS Radar Map (/tracking)"
             aria-label="Open Live Radar Map"
           >

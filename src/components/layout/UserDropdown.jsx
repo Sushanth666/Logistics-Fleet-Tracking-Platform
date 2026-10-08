@@ -59,8 +59,8 @@ export const UserDropdown = () => {
           />
         </div>
 
-        {/* Name, Role & Status Badge */}
-        <div className="hidden sm:block text-left">
+        {/* Name, Role & Status Badge (Desktop only; on mobile & tablet avatar with status dot is shown) */}
+        <div className="hidden lg:block text-left">
           <div className="flex items-center gap-1.5">
             <p className="text-xs font-semibold text-slate-900 dark:text-white leading-tight">{displayName}</p>
             {/* Status Indicator Near Name */}
