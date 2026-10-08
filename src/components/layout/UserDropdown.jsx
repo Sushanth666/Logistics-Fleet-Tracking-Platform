@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { User, LogOut, ShieldCheck, Settings, ChevronDown, Mail } from 'lucide-react';
 
 export const UserDropdown = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, updateUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ export const UserDropdown = () => {
   const displayRole = user?.role || 'Operations Lead';
   const displayInitials = user?.initials || 'AB';
   const displayEmail = user?.email || 'akash.barik@bharatlogix.in';
+  const dutyStatus = user?.dutyStatus || 'On Duty';
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -36,15 +37,54 @@ export const UserDropdown = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2.5 pl-2 border-l border-slate-200 dark:border-slate-800 hover:opacity-90 transition-opacity cursor-pointer group"
+        aria-label="User profile menu"
       >
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-500 via-fuchsia-500 to-pink-500 p-0.5 shadow-md shadow-purple-500/20 group-hover:ring-2 ring-purple-400/40 transition-all">
-          <div className="w-full h-full rounded-[10px] bg-white dark:bg-slate-900 flex items-center justify-center font-bold text-xs text-purple-700 dark:text-white">
-            {displayInitials}
+        {/* Avatar with Status Indicator Dot */}
+        <div className="relative">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-500 via-fuchsia-500 to-pink-500 p-0.5 shadow-md shadow-purple-500/20 group-hover:ring-2 ring-purple-400/40 transition-all">
+            <div className="w-full h-full rounded-[10px] bg-white dark:bg-slate-900 flex items-center justify-center font-bold text-xs text-purple-700 dark:text-white">
+              {displayInitials}
+            </div>
           </div>
+          {/* Status Dot on Profile Picture */}
+          <span
+            className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white dark:border-slate-900 shadow-sm transition-colors ${
+              dutyStatus === 'On Duty'
+                ? 'bg-emerald-500'
+                : dutyStatus === 'On Break'
+                ? 'bg-amber-400'
+                : 'bg-slate-400'
+            }`}
+            title={`Duty Status: ${dutyStatus}`}
+          />
         </div>
-        <div className="hidden xl:block text-left">
-          <div className="flex items-center gap-1">
+
+        {/* Name, Role & Status Badge */}
+        <div className="hidden sm:block text-left">
+          <div className="flex items-center gap-1.5">
             <p className="text-xs font-semibold text-slate-900 dark:text-white leading-tight">{displayName}</p>
+            {/* Status Indicator Near Name */}
+            <span
+              className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold border transition-colors ${
+                dutyStatus === 'On Duty'
+                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30'
+                  : dutyStatus === 'On Break'
+                  ? 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:border-amber-500/30'
+                  : 'bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700'
+              }`}
+              title={`Dispatcher Status: ${dutyStatus}`}
+            >
+              <span
+                className={`w-1.5 h-1.5 rounded-full ${
+                  dutyStatus === 'On Duty'
+                    ? 'bg-emerald-500 animate-pulse'
+                    : dutyStatus === 'On Break'
+                    ? 'bg-amber-400'
+                    : 'bg-slate-400'
+                }`}
+              />
+              <span>{dutyStatus}</span>
+            </span>
             <ChevronDown className="w-3 h-3 text-slate-500 group-hover:text-slate-900 dark:text-slate-400 dark:group-hover:text-white transition-colors" />
           </div>
           <p className="text-[10px] font-semibold text-purple-600 dark:text-purple-300">{displayRole}</p>
@@ -56,7 +96,26 @@ export const UserDropdown = () => {
         <div className="absolute right-0 mt-3 w-64 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150 divide-y divide-slate-100 dark:divide-slate-800/80">
           {/* Header */}
           <div className="p-4 bg-slate-50/90 dark:bg-slate-950/70">
-            <p className="text-xs font-bold text-slate-900 dark:text-white">{displayName}</p>
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-bold text-slate-900 dark:text-white">{displayName}</p>
+              {/* Status pill in header */}
+              <span
+                className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold border ${
+                  dutyStatus === 'On Duty'
+                    ? 'bg-emerald-100/70 text-emerald-800 border-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30'
+                    : dutyStatus === 'On Break'
+                    ? 'bg-amber-100/70 text-amber-800 border-amber-200 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30'
+                    : 'bg-slate-200 text-slate-700 border-slate-300 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700'
+                }`}
+              >
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    dutyStatus === 'On Duty' ? 'bg-emerald-500' : dutyStatus === 'On Break' ? 'bg-amber-400' : 'bg-slate-400'
+                  }`}
+                />
+                <span>{dutyStatus}</span>
+              </span>
+            </div>
             <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 mt-1 truncate">
               <Mail className="w-3.5 h-3.5 text-purple-500 dark:text-purple-400 shrink-0" />
               <span className="truncate">{displayEmail}</span>
@@ -69,6 +128,45 @@ export const UserDropdown = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Active Session
               </span>
+            </div>
+          </div>
+
+          {/* Quick Duty Status Switcher inside Dropdown */}
+          <div className="px-3 py-2.5 bg-slate-100/50 dark:bg-slate-950/40">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5 px-0.5">
+              Change Duty Status
+            </p>
+            <div className="grid grid-cols-3 gap-1 bg-white dark:bg-slate-900 p-1 rounded-xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
+              {['On Duty', 'On Break', 'Off Duty'].map((status) => {
+                const isSelected = dutyStatus === status;
+                return (
+                  <button
+                    key={status}
+                    type="button"
+                    onClick={() => updateUser({ dutyStatus: status })}
+                    className={`py-1 px-1 rounded-lg text-[10px] font-bold transition-all cursor-pointer flex items-center justify-center gap-1 ${
+                      isSelected
+                        ? status === 'On Duty'
+                          ? 'bg-emerald-600 text-white shadow-xs'
+                          : status === 'On Break'
+                          ? 'bg-amber-500 text-white shadow-xs'
+                          : 'bg-slate-700 text-white'
+                        : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                    }`}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${
+                        status === 'On Duty'
+                          ? 'bg-emerald-300'
+                          : status === 'On Break'
+                          ? 'bg-amber-300'
+                          : 'bg-slate-400'
+                      }`}
+                    />
+                    <span className="truncate">{status}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
