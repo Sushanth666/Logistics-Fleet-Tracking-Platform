@@ -27,7 +27,10 @@ export const UserDropdown = () => {
 
   const displayName = user?.name || 'Akash Barik';
   const displayRole = user?.role || 'Operations Lead';
-  const displayInitials = user?.initials || 'AB';
+  const displayInitials =
+    user?.initials?.trim() ||
+    (user?.name ? user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() : '') ||
+    'AB';
   const displayEmail = user?.email || 'akash.barik@bharatlogix.in';
   const dutyStatus = user?.dutyStatus || 'On Duty';
 
@@ -42,13 +45,19 @@ export const UserDropdown = () => {
         {/* Modern Circular Gradient Avatar with Embedded Duty Dot */}
         <div className="relative shrink-0">
           <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-pink-500 p-[1.5px] shadow-xs group-hover:scale-105 transition-transform duration-200">
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-700 to-indigo-800 flex items-center justify-center font-black text-[11px] text-white tracking-wider select-none">
+            <div
+              className="user-avatar-badge w-full h-full rounded-full flex items-center justify-center font-black text-[11px] tracking-wider select-none shadow-inner"
+              style={{
+                backgroundColor: '#7c3aed',
+                color: '#ffffff'
+              }}
+            >
               {displayInitials}
             </div>
           </div>
           {/* Duty Status Dot with Clean Ring */}
           <span
-            className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white dark:border-slate-900 shadow-xs transition-colors ${
+            className={`absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-white dark:ring-slate-900 shadow-xs transition-colors ${
               dutyStatus === 'On Duty'
                 ? 'bg-emerald-500'
                 : dutyStatus === 'On Break'
