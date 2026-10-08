@@ -166,8 +166,8 @@ export const LoginPage = () => {
         </div>
 
         {/* RIGHT 6 COLS: Rich Studio Auth Form with Signature Image 4 Design */}
-        <div id="login-form" className="w-full lg:w-1/2 bg-slate-50 dark:bg-slate-950 px-4 py-8 sm:px-10 lg:px-14 flex flex-col justify-start items-center relative transition-colors duration-300 scroll-mt-4">
-          <div className="w-full max-w-md group relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xl p-7 sm:p-8 space-y-6 mb-6">
+        <div id="login-form" className="w-full lg:w-1/2 bg-slate-50 dark:bg-slate-950 px-4 py-8 sm:px-10 lg:px-14 flex flex-col justify-center items-center relative transition-colors duration-300 scroll-mt-4 min-h-screen">
+          <div className="w-full max-w-md group relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xl p-7 sm:p-8 space-y-6 my-auto">
             {/* Top Radiant Highlight Bar — clipped with rounded-t-3xl on its own div */}
             <div className="absolute top-0 left-0 right-0 h-2 rounded-t-3xl overflow-hidden">
               <div className="h-full bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 opacity-95 group-hover:opacity-100 transition-opacity" />
