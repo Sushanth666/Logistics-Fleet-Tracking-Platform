@@ -93,9 +93,6 @@ export const Sidebar = ({ isOpen, onClose }) => {
                   <span>IND</span>
                 </span>
               </div>
-              <span className="text-[10px] tracking-wider uppercase font-bold text-purple-700 dark:text-purple-300 block mt-1">
-                National Fleet OS v2.4
-              </span>
             </div>
           </div>
         </div>
