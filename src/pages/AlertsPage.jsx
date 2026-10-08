@@ -120,7 +120,7 @@ export const AlertsPage = () => {
       </div>
 
       {/* Cyber Command Center Incident Metrics */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-3 lg:gap-3.5 xl:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3.5 md:gap-4 xl:gap-4">
         {/* Card 1: Active Incidents */}
         <div
           onClick={() => {

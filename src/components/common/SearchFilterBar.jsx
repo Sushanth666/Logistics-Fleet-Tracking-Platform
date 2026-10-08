@@ -32,9 +32,9 @@ export const SearchFilterBar = ({
 
   return (
     <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-lg backdrop-blur-md mb-6 space-y-3">
-      <div className="flex flex-col lg:flex-row gap-3 items-stretch lg:items-center justify-between">
+      <div className="flex flex-col xl:flex-row gap-3.5 items-stretch xl:items-center justify-between">
         {/* Search Input */}
-        <div className="relative flex-1 min-w-[260px]">
+        <div className="relative flex-1 w-full min-w-0">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500 pointer-events-none" />
           <input
             type="text"
@@ -54,13 +54,13 @@ export const SearchFilterBar = ({
         </div>
 
         {/* Filter Selectors */}
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5 w-full xl:w-auto">
           {statusOptions.length > 0 && (
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial min-w-[140px]">
               <select
                 value={statusFilter}
                 onChange={(e) => onStatusChange(e.target.value)}
-                className="bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
+                className="w-full sm:w-auto bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
               >
                 <option value="all">All Statuses</option>
                 {statusOptions.map(opt => (
@@ -71,11 +71,11 @@ export const SearchFilterBar = ({
           )}
 
           {secondaryOptions.length > 0 && (
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial min-w-[140px]">
               <select
                 value={secondaryFilter}
                 onChange={(e) => onSecondaryChange(e.target.value)}
-                className="bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
+                className="w-full sm:w-auto bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
               >
                 <option value="all">All {secondaryLabel}</option>
                 {secondaryOptions.map(opt => (
@@ -86,11 +86,11 @@ export const SearchFilterBar = ({
           )}
 
           {locationOptions.length > 0 && (
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial min-w-[140px]">
               <select
                 value={locationFilter}
                 onChange={(e) => onLocationChange(e.target.value)}
-                className="bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
+                className="w-full sm:w-auto bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
               >
                 <option value="all">All Locations / Hubs</option>
                 {locationOptions.map(opt => (
@@ -101,11 +101,11 @@ export const SearchFilterBar = ({
           )}
 
           {dateOptions.length > 0 && (
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial min-w-[140px]">
               <select
                 value={dateFilter}
                 onChange={(e) => onDateChange(e.target.value)}
-                className="bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
+                className="w-full sm:w-auto bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-sm font-medium rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-600 cursor-pointer shadow-sm transition-all hover:border-purple-300 dark:hover:border-slate-700"
               >
                 <option value="all">All Dates / Timeframes</option>
                 {dateOptions.map(opt => (

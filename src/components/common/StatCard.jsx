@@ -83,7 +83,7 @@ export const AnimatedNumber = ({ value, duration = 1200, className = '' }) => {
     };
   }, [value, duration]);
 
-  return <span className={`tabular-nums font-mono-nums ${className}`}>{displayValue}</span>;
+  return <span className={`tabular-nums font-mono-nums whitespace-nowrap ${className}`}>{displayValue}</span>;
 };
 
 /**
@@ -171,7 +171,7 @@ export const StatCard = ({
   return (
     <div
       onClick={onClick}
-      className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 p-3.5 sm:p-4 md:p-3.5 lg:p-4 xl:p-5 border border-slate-200/80 dark:border-slate-800 transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1.5 flex flex-col justify-between h-full ${scheme.hoverBorder} ${scheme.hoverShadow} ${onClick ? 'cursor-pointer' : ''}`}
+      className={`group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 p-4 sm:p-4.5 md:p-4 lg:p-4.5 xl:p-5 border border-slate-200/80 dark:border-slate-800 transition-all duration-300 ease-out shadow-sm hover:shadow-xl hover:-translate-y-1.5 flex flex-col justify-between h-full ${scheme.hoverBorder} ${scheme.hoverShadow} ${onClick ? 'cursor-pointer' : ''}`}
     >
       {/* Top Radiant Highlight Bar with Animation on Hover */}
       <div className={`absolute top-0 left-0 right-0 h-1.5 ${scheme.topBar} opacity-85 group-hover:opacity-100 group-hover:h-2 transition-all duration-300`} />
@@ -183,9 +183,9 @@ export const StatCard = ({
         {/* Top Header Row: Title on Left, Icon on Right */}
         <div className="flex items-start justify-between gap-1.5 md:gap-2">
           {/* Header Title with consistent vertical height for perfect baseline alignment across sibling cards */}
-          <div className="flex items-start gap-1.5 flex-1 min-h-[2.25rem] md:min-h-[2.5rem] pt-0.5">
+          <div className="flex items-start gap-1.5 flex-1 min-h-[2.25rem] md:min-h-[2.25rem] pt-0.5">
             <span className={`w-1.5 h-1.5 rounded-full ${scheme.beacon} opacity-70 group-hover:opacity-100 transition-opacity mt-1 shrink-0`} />
-            <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[10.5px] xl:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 leading-snug line-clamp-2">
+            <p className="text-[10px] sm:text-[11px] md:text-xs lg:text-xs xl:text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 leading-snug line-clamp-2">
               {title}
             </p>
           </div>
@@ -194,9 +194,9 @@ export const StatCard = ({
           {Icon && (
             <div className="relative shrink-0">
               <div
-                className={`p-2 sm:p-2 md:p-2 lg:p-2.5 xl:p-3 rounded-xl xl:rounded-2xl border transition-all duration-300 ${scheme.iconBox} group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-md`}
+                className={`p-2 sm:p-2 md:p-2.5 lg:p-2.5 xl:p-3 rounded-xl xl:rounded-2xl border transition-all duration-300 ${scheme.iconBox} group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-md`}
               >
-                <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-4 md:h-4 lg:w-4.5 lg:h-4.5 xl:w-6 xl:h-6 transition-transform duration-300" />
+                <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 transition-transform duration-300" />
               </div>
 
               {/* Extra Pulsing Dot for Alert Cards */}
@@ -212,7 +212,7 @@ export const StatCard = ({
 
         {/* Middle Metric Value & Trend Badge Row: Perfectly centered and non-wrapping */}
         <div className="flex items-center justify-between gap-1.5 min-h-[2.25rem] md:min-h-[2.5rem]">
-          <span className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-purple-800 dark:group-hover:from-white dark:group-hover:to-purple-200 transition-colors shrink-0">
+          <span className="text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-purple-800 dark:group-hover:from-white dark:group-hover:to-purple-200 transition-colors shrink-0 whitespace-nowrap">
             <AnimatedNumber value={value} duration={1100} />
           </span>
 
@@ -235,9 +235,9 @@ export const StatCard = ({
         </div>
 
         {/* Bottom Subtext Row: Aligned baseline across all cards */}
-        <div className="min-h-[1.75rem] md:min-h-[2rem] flex items-center pt-1 border-t border-slate-100 dark:border-slate-800/80">
+        <div className="min-h-[1.75rem] md:min-h-[1.75rem] xl:min-h-[2rem] flex items-center pt-1 border-t border-slate-100 dark:border-slate-800/80">
           {subtext && (
-            <p className="text-[10px] sm:text-[10.5px] md:text-[10px] lg:text-[11px] xl:text-xs font-medium text-slate-600 dark:text-slate-400 leading-tight line-clamp-2">
+            <p className="text-[10px] sm:text-[11px] md:text-xs lg:text-xs xl:text-xs font-medium text-slate-600 dark:text-slate-400 leading-tight line-clamp-2">
               <AnimatedSubtext text={subtext} duration={1000} />
             </p>
           )}

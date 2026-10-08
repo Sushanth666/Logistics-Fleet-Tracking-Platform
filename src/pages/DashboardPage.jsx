@@ -137,7 +137,7 @@ export const DashboardPage = () => {
       </div>
 
       {/* KPI Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-3 lg:gap-3.5 xl:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3.5 md:gap-4 xl:gap-4">
         <StatCard
           title="Total Fleet Assets"
           value={vehicles.length}
@@ -184,9 +184,9 @@ export const DashboardPage = () => {
       </div>
 
       {/* Analytics & Fleet Health Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Weekly Delivery Volume & Timeliness (2 Cols) */}
-        <div className="lg:col-span-2 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl backdrop-blur-md">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        {/* Weekly Delivery Volume & Timeliness (2 Cols on desktop) */}
+        <div className="xl:col-span-2 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl backdrop-blur-md">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 gap-2">
             <div>
               <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -297,9 +297,9 @@ export const DashboardPage = () => {
       </div>
 
       {/* Real-Time Live Shipments & Operations Alert Center */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Active In-Transit Shipments (2 cols) */}
-        <div className="lg:col-span-2 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl backdrop-blur-md">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        {/* Active In-Transit Shipments (2 cols on desktop) */}
+        <div className="xl:col-span-2 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl backdrop-blur-md">
           <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
               <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -362,7 +362,7 @@ export const DashboardPage = () => {
         </div>
 
         {/* Live Alerts & Incidents Feed */}
-        <div className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl backdrop-blur-md flex flex-col justify-between">
+        <div className="xl:col-span-1 bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl backdrop-blur-md flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
               <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -377,7 +377,7 @@ export const DashboardPage = () => {
               </Link>
             </div>
 
-            <div className="space-y-3 mt-4">
+            <div className="space-y-3 md:grid md:grid-cols-2 md:space-y-0 md:gap-3 xl:block xl:space-y-3 mt-4">
               {alerts.slice(0, 4).map((alert) => {
                 const isCrit = alert.severity === 'critical';
                 const isWarn = alert.severity === 'warning';
@@ -393,10 +393,10 @@ export const DashboardPage = () => {
                         : 'bg-slate-50 border-slate-200 text-slate-900 dark:bg-slate-950/60 dark:border-slate-800 dark:text-slate-300'
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold flex items-center gap-1.5">
+                    <div className="flex items-center justify-between mb-1 gap-2">
+                      <span className="font-bold flex items-center gap-1.5 min-w-0 flex-1">
                         <StatusBadge status={alert.severity} size="sm" />
-                        <span className="truncate max-w-[160px]">{alert.title}</span>
+                        <span className="truncate">{alert.title}</span>
                       </span>
                       <span className="text-[10px] text-slate-500 dark:text-slate-400 shrink-0">{alert.timestamp}</span>
                     </div>

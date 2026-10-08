@@ -225,7 +225,7 @@ export const OperatorProfilePage = () => {
       </div>
 
       {/* KPI Performance Metrics with Animated StatCards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-3 lg:gap-3.5 xl:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3.5 md:gap-4 xl:gap-4">
         <StatCard
           title="Total Dispatches"
           value="384"
@@ -260,9 +260,9 @@ export const OperatorProfilePage = () => {
 
       {/* Tab 1: Overview & Edit Form - Image 1 Refined with Image 4 StatCard Design Archetype */}
       {activeTab === 'overview' && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           {/* Edit Form Card (Image 1 Left) */}
-          <div className="lg:col-span-2 group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all p-6 lg:p-7 space-y-6">
+          <div className="xl:col-span-2 group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all p-6 lg:p-7 space-y-6">
             {/* Top Radiant Highlight Bar (Signature StatCard design from Image 4) */}
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 opacity-90 group-hover:opacity-100 transition-opacity" />
 
@@ -399,7 +399,7 @@ export const OperatorProfilePage = () => {
           </div>
 
           {/* Side Summary & Badges - Image 1 Right */}
-          <div className="space-y-6">
+          <div className="xl:col-span-1 space-y-6">
             {/* Certifications & Clearances Card */}
             <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all p-6 space-y-4">
               {/* Top Radiant Highlight Bar (Signature StatCard design from Image 4) */}
