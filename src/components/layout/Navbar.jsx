@@ -27,7 +27,7 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
     <>
       <header
         onDoubleClick={onScrollToTop}
-        className="sticky top-0 z-40 h-16 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-3 transition-colors duration-300"
+        className="sticky top-0 z-40 h-16 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-3 sm:px-5 lg:px-6 flex items-center justify-between gap-2 sm:gap-3 transition-colors duration-300"
       >
         {/* Left — Mobile / Tablet Menu Toggle + Brand Logo */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -72,7 +72,7 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-1 sm:gap-2 lg:gap-2.5 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Mobile Quick Search Icon Trigger (Only on mobile <640px) */}
           <button
             onClick={() => setIsCommandOpen(true)}
@@ -102,6 +102,9 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
 
           {/* Notifications Dropdown */}
           <AlertDropdown />
+
+          {/* Subtle Vertical Divider */}
+          <div className="h-5 w-px bg-slate-200/90 dark:bg-slate-800 mx-0.5 sm:mx-1 shrink-0" />
 
           {/* Interactive User Profile Dropdown */}
           <UserDropdown />

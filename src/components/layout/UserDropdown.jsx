@@ -33,22 +33,22 @@ export const UserDropdown = () => {
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Trigger Button */}
+      {/* Trigger Button — Sleek Executive Capsule Pill */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 pl-2 border-l border-slate-200 dark:border-slate-800 hover:opacity-90 transition-opacity cursor-pointer group"
+        className="flex items-center gap-2.5 p-1 lg:pl-1.5 lg:pr-3 rounded-full bg-slate-100/80 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/90 hover:border-purple-300 dark:border-slate-700/80 dark:hover:border-purple-500/40 shadow-2xs hover:shadow-xs transition-all duration-200 cursor-pointer group select-none"
         aria-label="User profile menu"
       >
-        {/* Avatar with Status Indicator Dot */}
-        <div className="relative">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-500 via-fuchsia-500 to-pink-500 p-0.5 shadow-md shadow-purple-500/20 group-hover:ring-2 ring-purple-400/40 transition-all">
-            <div className="w-full h-full rounded-[10px] bg-white dark:bg-slate-900 flex items-center justify-center font-bold text-xs text-purple-700 dark:text-white">
+        {/* Modern Circular Gradient Avatar with Embedded Duty Dot */}
+        <div className="relative shrink-0">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 p-[1.5px] shadow-xs group-hover:scale-105 transition-transform duration-200">
+            <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center font-bold text-xs text-white">
               {displayInitials}
             </div>
           </div>
-          {/* Status Dot on Profile Picture */}
+          {/* Duty Status Dot with Clean Ring */}
           <span
-            className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white dark:border-slate-900 shadow-sm transition-colors ${
+            className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white dark:border-slate-900 shadow-xs transition-colors ${
               dutyStatus === 'On Duty'
                 ? 'bg-emerald-500'
                 : dutyStatus === 'On Break'
@@ -59,36 +59,31 @@ export const UserDropdown = () => {
           />
         </div>
 
-        {/* Name, Role & Status Badge (Desktop only; on mobile & tablet avatar with status dot is shown) */}
-        <div className="hidden lg:block text-left">
-          <div className="flex items-center gap-1.5">
-            <p className="text-xs font-semibold text-slate-900 dark:text-white leading-tight">{displayName}</p>
-            {/* Status Indicator Near Name */}
-            <span
-              className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-bold border transition-colors ${
-                dutyStatus === 'On Duty'
-                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/30'
-                  : dutyStatus === 'On Break'
-                  ? 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:border-amber-500/30'
-                  : 'bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700'
-              }`}
-              title={`Dispatcher Status: ${dutyStatus}`}
-            >
-              <span
-                className={`w-1.5 h-1.5 rounded-full ${
-                  dutyStatus === 'On Duty'
-                    ? 'bg-emerald-500 animate-pulse'
-                    : dutyStatus === 'On Break'
-                    ? 'bg-amber-400'
-                    : 'bg-slate-400'
-                }`}
-              />
-              <span>{dutyStatus}</span>
+        {/* Name & Role (Desktop only; on mobile & tablet avatar pill is shown) */}
+        <div className="hidden lg:flex flex-col text-left min-w-0 pr-0.5">
+          <div className="flex items-center gap-1.5 leading-tight">
+            <span className="text-xs font-bold text-slate-800 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors truncate">
+              {displayName}
             </span>
-            <ChevronDown className="w-3 h-3 text-slate-500 group-hover:text-slate-900 dark:text-slate-400 dark:group-hover:text-white transition-colors" />
           </div>
-          <p className="text-[10px] font-semibold text-purple-600 dark:text-purple-300">{displayRole}</p>
+          <div className="flex items-center gap-1.5 mt-0.5 leading-none">
+            <span
+              className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                dutyStatus === 'On Duty'
+                  ? 'bg-emerald-500 animate-pulse'
+                  : dutyStatus === 'On Break'
+                  ? 'bg-amber-400'
+                  : 'bg-slate-400'
+              }`}
+            />
+            <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 truncate">
+              {displayRole}
+            </span>
+          </div>
         </div>
+
+        {/* Chevron Indicator */}
+        <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-transform group-hover:translate-y-0.5 shrink-0 hidden lg:block" />
       </button>
 
       {/* Dropdown Menu */}
