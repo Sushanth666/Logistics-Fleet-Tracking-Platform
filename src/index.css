@@ -247,14 +247,17 @@ html.light table td {
   }
 
   html,
-  body,
-  #root {
-    height: 100%;
+  body {
     width: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    overscroll-behavior: none;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100%;
+    width: 100%;
   }
   
   body {

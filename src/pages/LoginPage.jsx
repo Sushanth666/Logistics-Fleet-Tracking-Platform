@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { ThemeToggle } from '../components/layout/ThemeToggle';
@@ -10,6 +10,7 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
+  ArrowDown,
   ShieldCheck,
   Sparkles,
   Zap,
@@ -77,8 +78,18 @@ export const LoginPage = () => {
     }
   };
 
+  // Ensure body and root scrolling is unlocked on mobile
+  useEffect(() => {
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, []);
+
   return (
-    <div className="relative min-h-screen w-full bg-slate-900 text-slate-100 flex flex-col lg:flex-row transition-colors duration-300">
+    <div className="relative min-h-screen w-full overflow-x-hidden overflow-y-auto lg:overflow-visible bg-slate-900 text-slate-100 flex flex-col lg:flex-row transition-colors duration-300">
       {/* FLOATING THEME TOGGLE BUTTON */}
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
@@ -156,6 +167,18 @@ export const LoginPage = () => {
                 </div>
               </div>
             </div>
+
+            {/* Quick Mobile Jump to Login Form */}
+            <div className="lg:hidden pt-2 flex items-center justify-between">
+              <a
+                href="#login-form"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 border border-purple-400/30 text-purple-200 text-xs font-semibold backdrop-blur-md transition-all active:scale-95"
+              >
+                <span>Scroll to Sign In Form</span>
+                <ArrowDown className="w-3.5 h-3.5 text-purple-300 animate-bounce" />
+              </a>
+              <span className="text-[11px] text-slate-400 font-mono">Pan-India OS</span>
+            </div>
           </div>
 
           {/* Bottom Govt Regulatory Strip */}
@@ -169,7 +192,7 @@ export const LoginPage = () => {
         </div>
 
         {/* RIGHT 6 COLS: Rich Studio Auth Form with Signature Image 4 Design */}
-        <div className="w-full lg:w-1/2 bg-slate-50 dark:bg-slate-950 px-4 py-8 sm:px-10 lg:px-14 lg:overflow-y-auto flex flex-col justify-start items-center relative transition-colors duration-300">
+        <div id="login-form" className="w-full lg:w-1/2 bg-slate-50 dark:bg-slate-950 px-4 py-8 sm:px-10 lg:px-14 lg:overflow-y-auto flex flex-col justify-start items-center relative transition-colors duration-300 scroll-mt-4">
           <div className="w-full max-w-md group relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xl p-7 sm:p-8 space-y-6 mb-6">
             {/* Top Radiant Highlight Bar — clipped with rounded-t-3xl on its own div */}
             <div className="absolute top-0 left-0 right-0 h-2 rounded-t-3xl overflow-hidden">
