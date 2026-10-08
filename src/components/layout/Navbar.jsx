@@ -49,8 +49,8 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
             </span>
           </Link>
 
-          {/* Omnisearch Command Bar (Ctrl+K) — Elegantly Left-Aligned */}
-          <div className="w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg min-w-0 hidden sm:block">
+          {/* Omnisearch Command Bar (Ctrl+K) — Elegantly Positioned */}
+          <div className="w-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg min-w-0 hidden sm:block sm:ml-2 md:ml-4 lg:ml-8">
             <button
               onClick={() => setIsCommandOpen(true)}
               className="w-full flex items-center justify-between px-3.5 py-2 rounded-full bg-slate-100/80 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/90 hover:border-purple-400 dark:border-slate-700/80 dark:hover:border-purple-500/60 shadow-2xs hover:shadow-xs transition-all cursor-pointer group text-left"
