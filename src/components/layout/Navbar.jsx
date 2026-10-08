@@ -83,15 +83,15 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
           </button>
 
           {/* Unified Utility Action Dock */}
-          <div className="flex items-center p-1 rounded-full bg-slate-100/80 dark:bg-slate-850/70 border border-slate-200/90 dark:border-slate-750 shadow-2xs">
-            <ThemeToggle className="!border-0 !shadow-none !bg-transparent hover:!bg-white dark:hover:!bg-slate-800 !rounded-full !p-2" />
+          <div className="flex items-center p-1 rounded-full bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80 shadow-2xs transition-colors duration-200">
+            <ThemeToggle isDocked={true} />
 
             <div className="h-3.5 w-px bg-slate-200 dark:bg-slate-700/80 mx-0.5 hidden sm:block" />
 
             {/* Quick Link to Map Tracking */}
             <Link
               to="/tracking"
-              className="hidden sm:inline-flex relative p-2 rounded-full text-purple-600 dark:text-purple-400 hover:bg-white dark:hover:bg-slate-800 transition-all items-center justify-center cursor-pointer group shrink-0"
+              className="hidden sm:inline-flex relative p-2 rounded-full text-purple-600 dark:text-purple-400 hover:bg-white dark:hover:bg-slate-700/80 transition-all items-center justify-center cursor-pointer group shrink-0"
               title="Live GPS Radar Map (/tracking)"
               aria-label="Open Live Radar Map"
             >

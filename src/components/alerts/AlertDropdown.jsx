@@ -24,7 +24,7 @@ export const AlertDropdown = ({ isDocked = false, className = '' }) => {
         onClick={() => setIsOpen(!isOpen)}
         className={
           isDocked
-            ? `relative p-2 rounded-full transition-all cursor-pointer text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 flex items-center justify-center ${className}`
+            ? `relative p-2 rounded-full transition-all cursor-pointer text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700/80 flex items-center justify-center ${className}`
             : `relative p-2.5 rounded-xl border transition-all cursor-pointer shadow-sm bg-white hover:bg-slate-50 border-slate-200 text-slate-700 hover:text-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-slate-800 dark:text-slate-300 dark:hover:text-white ${className}`
         }
         aria-label="View notifications"
