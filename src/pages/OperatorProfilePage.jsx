@@ -129,8 +129,18 @@ export const OperatorProfilePage = () => {
                   {initials}
                 </div>
               </div>
-              <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900 flex items-center justify-center shadow-sm" title="Active Telematics Session">
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              {/* Dynamic Duty Status Dot on Avatar */}
+              <span
+                className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center shadow-sm transition-colors ${
+                  formData.dutyStatus === 'On Duty'
+                    ? 'bg-emerald-500'
+                    : formData.dutyStatus === 'On Break'
+                    ? 'bg-amber-400'
+                    : 'bg-slate-400'
+                }`}
+                title={`Duty Status: ${formData.dutyStatus || 'On Duty'}`}
+              >
+                <span className={`w-2 h-2 rounded-full ${formData.dutyStatus === 'Off Duty' ? 'bg-slate-200' : 'bg-white animate-pulse'}`} />
               </span>
             </div>
 
@@ -139,6 +149,28 @@ export const OperatorProfilePage = () => {
                 <h1 className="text-2xl lg:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                   {operatorName}
                 </h1>
+
+                {/* Duty Status Badge near Name */}
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-bold tracking-wide border shadow-xs inline-flex items-center gap-1.5 transition-colors ${
+                    formData.dutyStatus === 'On Duty'
+                      ? 'bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/40'
+                      : formData.dutyStatus === 'On Break'
+                      ? 'bg-amber-50 text-amber-800 border-amber-300 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/40'
+                      : 'bg-slate-100 text-slate-700 border-slate-300 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700'
+                  }`}
+                >
+                  <span
+                    className={`w-2 h-2 rounded-full ${
+                      formData.dutyStatus === 'On Duty'
+                        ? 'bg-emerald-500 animate-pulse'
+                        : formData.dutyStatus === 'On Break'
+                        ? 'bg-amber-400'
+                        : 'bg-slate-400'
+                    }`}
+                  />
+                  <span>{formData.dutyStatus || 'On Duty'}</span>
+                </span>
 
                 {/* Operations Lead Badge with beacon dot */}
                 <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-100 text-purple-800 border border-purple-200 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/30 shadow-sm inline-flex items-center gap-1.5">
