@@ -487,14 +487,36 @@ html.light table td {
 }
 
 button,
+button *,
 [role="button"],
-[role="tab"] {
-  user-select: none;
-  -webkit-user-select: none;
+[role="button"] *,
+[role="tab"],
+[role="tab"] *,
+.btn,
+.btn * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+button::selection,
+button *::selection,
+[role="button"]::selection,
+[role="button"] *::selection,
+[role="tab"]::selection,
+[role="tab"] *::selection,
+.btn::selection,
+.btn *::selection {
+  background: transparent !important;
+  color: inherit !important;
 }
 
 button:focus,
-button:focus-visible {
-  outline: none;
+button:focus-visible,
+[role="button"]:focus,
+[role="tab"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 

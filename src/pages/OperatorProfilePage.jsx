@@ -242,7 +242,20 @@ export const OperatorProfilePage = () => {
           ].map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                if (window.getSelection) {
+                  window.getSelection().removeAllRanges();
+                }
+              }}
+              onClick={() => {
+                setActiveTab(tab.id);
+                if (window.getSelection) {
+                  window.getSelection().removeAllRanges();
+                }
+              }}
               className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shrink-0 transition-all cursor-pointer select-none outline-none focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-md shadow-purple-600/20'
