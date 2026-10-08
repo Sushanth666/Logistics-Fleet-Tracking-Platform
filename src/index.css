@@ -170,7 +170,16 @@ button.text-white,
 button.text-white span,
 .btn-primary,
 .btn-primary span,
-.bg-gradient-to-r.text-white,
+.bg-gradient-to-r.text-white {
+  color: #ffffff !important;
+}
+
+button span,
+[role="tab"] span,
+[role="button"] span {
+  background-color: transparent !important;
+}
+
 .user-avatar-badge {
   background-color: #7c3aed !important;
   color: #ffffff !important;

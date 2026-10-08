@@ -185,8 +185,8 @@ export const PlatformSettingsPage = () => {
                 : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
             }`}
           >
-            <tab.icon className="w-3.5 h-3.5 shrink-0 pointer-events-none select-none" />
-            <span className="select-none pointer-events-none">{tab.label}</span>
+            <tab.icon className="w-3.5 h-3.5 shrink-0 pointer-events-none select-none bg-transparent" />
+            <span className="select-none pointer-events-none bg-transparent">{tab.label}</span>
           </button>
         ))}
       </div>
