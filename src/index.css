@@ -269,20 +269,33 @@ html.light table td {
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Limit scrolling strictly to designated content sections and drawers */
+  /* Limit scrolling strictly to designated vertical content sections and drawers */
   main,
   [data-scrollable="true"],
   .overflow-y-auto,
-  .overflow-x-auto,
   .overflow-auto {
     overscroll-behavior: contain;
+  }
+
+  /* Horizontal scrollers must NEVER capture vertical touch scrolling gestures */
+  .overflow-x-auto,
+  .table-responsive-container {
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto !important;
+    touch-action: pan-x pan-y !important;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
 /* Custom Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-hover) transparent;
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -293,6 +306,41 @@ html.light table td {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-brand);
+}
+
+/* Enhanced tablet scrollbars (640px to 1024px) for touch and pointer devices */
+@media (min-width: 640px) and (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 9999px;
+  }
+  html.light ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-brand);
+    border-radius: 9999px;
+  }
+  
+  /* Horizontal table scrollbar on tablet */
+  .table-responsive-container {
+    scrollbar-width: auto;
+  }
+  .table-responsive-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .table-responsive-container::-webkit-scrollbar-track {
+    background: rgba(148, 163, 184, 0.15);
+    border-radius: 9999px;
+  }
+  .table-responsive-container::-webkit-scrollbar-thumb {
+    background: var(--color-brand);
+    border-radius: 9999px;
+  }
 }
 
 /* Glassmorphism utilities with CSS Variables */

@@ -20,8 +20,8 @@ export const VehicleTable = ({
   onTrackMap
 }) => {
   return (
-    <div className="overflow-x-auto overscroll-contain rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-xl backdrop-blur-md">
-      <table className="w-full text-left text-sm text-slate-800 dark:text-slate-300">
+    <div className="table-responsive-container overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 shadow-xl backdrop-blur-md">
+      <table className="w-full min-w-[920px] text-left text-sm text-slate-800 dark:text-slate-300">
         <thead className="bg-slate-50/90 dark:bg-slate-950/70 text-xs uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider border-b border-slate-200 dark:border-slate-800">
           <tr>
             <th className="py-4 px-4 sm:px-6">Vehicle Asset</th>
