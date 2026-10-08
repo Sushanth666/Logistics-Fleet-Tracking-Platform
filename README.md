@@ -1,82 +1,172 @@
-# BharatLogix | Enterprise Logistics & Fleet Tracking Platform
+# BharatLogix | National Fleet & Logistics Operations Platform
 
-A modern, production-grade frontend operations platform for managing enterprise logistics, commercial fleet vehicles, CDL drivers, active shipments, live GPS telemetry, and incident response.
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8.3-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?logo=leaflet&logoColor=white)](https://leafletjs.com/)
+[![Compliance](https://img.shields.io/badge/AIS--140-Certified-emerald)](https://morth.nic.in/)
+[![Gateway](https://img.shields.io/badge/ULIP-Integrated-purple)](https://gati-shakti.nic.in/)
 
-Built with **React.js**, **Tailwind CSS**, **React Router v7**, **Leaflet**, and **Recharts**.
+**BharatLogix** is an enterprise-grade, real-time logistics operations and fleet telematics platform designed specifically for commercial freight carriers, multi-modal transport operators, and national supply chain dispatchers across India.
+
+The platform unifies live GPS radar tracking, AIS-140 compliance monitoring, driver safety scorecards, shipment lifecycle management, and emergency response into a high-performance command center.
 
 ---
 
-## 🌟 Key Platform Modules & Capabilities
+## 📌 Executive Summary
 
-### 1. Operations Command Dashboard (`/`)
-- **Executive KPIs**: Real-time count of total vehicles, on-duty drivers, active shipments, and delay incident alerts.
-- **Delivery Performance Analytics**: Interactive bar charts visualizing daily delivered shipments against on-time benchmarks.
-- **Fleet Utilization Engine**: Real-time donut chart breaking down in-transit, standby/idle, and maintenance asset distribution.
-- **Live Dispatched Shipments Feed**: Quick overview of en-route freight manifests with progress bars and ETA countdowns.
-- **Incident Alerts Stream**: Immediate visibility of vehicle diagnostic flags, critical delays, and route advisories.
+Modern logistics across Indian freight corridors (Delhi–Mumbai Expressway, Golden Quadrilateral, NH-44) requires seamless coordination between dispatched consignments, commercial vehicle telemetry, and national regulatory gateways. 
+
+**BharatLogix** delivers a high-contrast, responsive operations interface that enables logistics dispatchers and fleet managers to:
+- **Track fleet assets in real-time** with interactive GPS maps, speedometers, and fuel consumption monitors.
+- **Ensure regulatory compliance** with built-in AIS-140 GPS standards and Government ULIP (Unified Logistics Interface Platform) verification.
+- **Manage drivers and consignments** with digitized freight manifests, safety scorecards, and automated ETA calculation.
+- **Respond to critical alerts** such as geofence deviations, speeding, vehicle maintenance flags, and delivery delays.
+
+---
+
+## 🇮🇳 National Compliance & Telematics Integration
+
+BharatLogix comes pre-configured with operational standards tailored for Indian freight:
+
+| Standard / System | Description | Integration Level |
+| :--- | :--- | :--- |
+| **AIS-140 Telematics** | Ministry of Road Transport & Highways (MoRTH) certified vehicle location tracking (VLTD) and SOS panic button feeds. | Built-in telemetry metrics & device health checks |
+| **ULIP Gateway** | Unified Logistics Interface Platform integration linking VAHAN, SARATHI, FASTag, and FOIS. | Interactive National Gateway Modal (`/compliance`) |
+| **E-Way Bill & GST** | Real-time consignment validity tracking with automated expiry countdowns. | Dispatched freight manifests & milestone tracker |
+| **NETC FASTag** | Electronic toll deduction tracking across national toll plazas. | Route expenses & corridor waypoint verification |
+| **IST Operations Clock** | Indian Standard Time (UTC+05:30) live clock ticker synchronized with dispatch schedules. | Sidebar & desktop telemetry feeds |
+
+---
+
+## 🌟 Core Modules & Platform Capabilities
+
+### 1. Operations Command Center (`/`)
+- **Executive KPIs**: Real-time counters for active vehicles, drivers on duty, en-route consignments, and critical incidents.
+- **Fleet Utilization Engine**: Donut chart visualizing asset allocation (*In Transit*, *Idle / Standby*, *Under Maintenance*).
+- **Delivery SLA Trends**: Analytics tracking on-time performance against contractual delivery benchmarks.
+- **Live Dispatched Feed**: Instant access to ongoing shipments with transit progress bars and dynamic ETAs.
 
 ### 2. Live GPS Telematics Radar (`/tracking`)
-- **Interactive Leaflet Map**: Powered by Carto Dark Matter tiles with support for street view switching.
-- **Custom Hardware DivIcons**: Zero-dependency animated vehicle icons with status-based glowing pulse animations.
-- **Origin & Destination Waypoint Routing**: Polyline paths connecting pickup points, current GPS position, and dropoff locations.
-- **Telemetry Heads-Up Display (HUD)**: Real-time speedometer gauge, fuel/battery percentage, engine temperature threshold monitor, and asset health ratings.
-- **Live Simulation Engine**: Toggleable real-time GPS simulation that dynamically drifts vehicle coordinates, speed, and fuel consumption.
+- **Interactive Leaflet Mapping**: Powered by Carto Dark Matter and High-Contrast Street view tiles.
+- **Simulated Fleet Telemetry**: Real-time vehicle coordinate drift, speed fluctuations, fuel decay, and engine temperature.
+- **Heads-Up Display (HUD)**: Speedometer gauge, battery percentage, engine coolant monitoring, and asset health ratings.
+- **Corridor Polyline Waypoints**: Visualizes pickup hubs, current GPS coordinates, and drop-off destinations.
 
-### 3. Vehicle & Asset Management (`/vehicles`)
-- **Full Asset Registry**: Comprehensive table and grid views displaying vehicle class, license plate, model, driver assignment, and current depot.
-- **Add / Edit Vehicle Modal**: Complete validation for vehicle class, license plate, initial fuel, odometer, and capacity limits.
-- **Deep Telematics Drawer**: In-depth inspection sheet displaying service intervals, past diagnostic scans, and maintenance history.
+### 3. Commercial Vehicle Fleet (`/vehicles`)
+- **Asset Registry**: Detailed catalog of commercial trucks, electric freight vans, reefer containers, and heavy haulers.
+- **Telemetry Drawer**: In-depth inspection sheet displaying service history, odometer readings, and diagnostic error codes.
+- **Vehicle Registration Modal**: Add or edit vehicles with custom capacity, fuel specifications, and assigned depots.
 
 ### 4. Driver Roster & Safety Scorecards (`/drivers`)
-- **Operator Profiles**: Driver directory featuring Commercial Driver License (CDL) numbers, classifications, and contact info.
-- **Availability Status**: Quick tracking of drivers who are *On Route*, *Available*, *On Break*, or *Off Duty*.
-- **Performance Scorecards**: Detailed modal breakdown of safety scores, on-time delivery rates, total mileage, and driving behavior metrics (smooth braking, speed limit adherence, and HOS compliance).
+- **Directory**: Driver roster featuring Commercial Driver License (CDL) credentials, phone numbers, and duty states.
+- **Safety Scorecards**: Analytics evaluating speed compliance, harsh braking frequency, and Hours of Service (HOS).
+- **Duty Toggle**: Instant status toggles (*On Route*, *Available*, *On Break*, *Off Duty*).
 
-### 5. Shipment Dispatch & Lifecycle (`/shipments`)
-- **Freight Manifest Management**: Create, edit, and track consignments with custom cargo descriptions, priority flags, and weights.
-- **Assigned Carrier & Driver**: Direct linkage between active shipments, assigned vehicles, and dispatched drivers.
-- **Milestone Timeline Tracker**: Visual journey tracker illustrating origin dispatch, highway waypoints, checkpoints, and consignee signoffs.
+### 5. Freight Consignments & Shipments (`/shipments`)
+- **Manifest Management**: Create, edit, and dispatch consignments with cargo descriptions, priority flags, and tonnages.
+- **Journey Timeline Tracker**: Visual milestone roadmap tracking warehouse departure, expressway checkpoints, and consignee signoffs.
+- **Carrier Assignment**: Link freight directly to licensed vehicles and available drivers.
 
-### 6. Universal Search & Advanced Filters
-- Integrated multi-attribute filtering across all modules:
-  - Keyword search (Plate, driver name, shipment ID, city, customer)
-  - Status filters (In Transit, Standby, Maintenance, Delayed, Delivered)
-  - Secondary classification filters (Vehicle class, CDL license type, priority tier)
-  - One-click reset filters and active count summary.
+### 6. Incident Management & Alerts (`/alerts`)
+- **Categorized Feeds**: Filter between delayed shipments, mechanical maintenance warnings, and route advisories.
+- **Severity Tiers**: Instant color-coded classification (*Critical*, *Warning*, *Info*).
+- **Actions**: Mark alerts as acknowledged, clear notifications, or filter by unread status.
 
-### 7. Alerts & Incident Operations Center (`/alerts`)
-- Categorized notifications for:
-  - **Delayed Shipments**: Critical alerts with incident root causes and revised ETAs.
-  - **Vehicle Maintenance**: Low fuel warnings, engine coolant temp alerts, and overdue inspection notices.
-  - **Delivery Updates**: Waypoint clearances and final consignee signatures.
-  - **Driver Notifications**: Shift starts, compliance alerts, and rest intervals.
-- Actions: Filter by category, filter by severity (*Critical*, *Warning*, *Info*), unread filter, individual acknowledge, and bulk mark as read.
+### 7. Universal Command Palette (`Ctrl + K`)
+- Omnisearch shortcut (`Ctrl + K` or `Cmd + K`) enabling keyboard-driven navigation across vehicles, shipments, drivers, and actions.
+
+### 8. Operator Profile & Platform Settings (`/profile`, `/settings`)
+- **Dispatcher Profile**: Customizable operator info, security clearance tiers, and live duty status indicators (*On Duty*, *On Break*, *Off Duty*).
+- **System Settings**: Telemetry polling intervals, geofencing alert sensitivity, speed alert thresholds, and local storage data backups.
+
+---
+
+## 📁 Enterprise Layered Architecture
+
+The project is structured following enterprise React layered design principles with `@/` path aliasing:
+
+```text
+src/
+├── api/
+│   └── mockData.js          # Realistic logistics seed data & freight corridors
+├── components/              # Modular component architecture
+│   ├── common/              # Atomic UI design system (Modal, StatCard, Badge, Toast, Skeleton)
+│   ├── layout/              # Application shell (Navbar, Sidebar, CommandPalette, UserDropdown)
+│   ├── alerts/              # Incident notifications and dropdown drawer
+│   ├── compliance/          # National ULIP & AIS-140 compliance modal
+│   ├── drivers/             # Driver scorecards, tables, and modal editors
+│   ├── map/                 # Leaflet GIS tracking map and telemetry cards
+│   ├── shipments/           # Freight tables, modals, and journey timelines
+│   ├── vehicles/            # Fleet asset tables, spec drawers, and modals
+│   └── index.js             # Unified components barrel export
+├── constants/               # Single Source of Truth constants
+│   ├── routes.js            # Route URLs and page titles
+│   ├── fleet.js             # Domain enums, status codes, and standards
+│   └── index.js             # Constants barrel export
+├── context/                 # Global state management
+│   ├── AuthContext.jsx      # Session state, dispatcher credentials, and duty status
+│   ├── FleetContext.jsx     # Fleet CRUD, GPS simulation engine, and alert feed
+│   ├── ThemeContext.jsx     # Dark, Light, Violet, Midnight multi-theme engine
+│   └── index.js             # Context barrel export
+├── hooks/                   # Custom reusable React hooks
+│   ├── useAnimatedTabTitle.js # Dynamic browser tab alert indicators
+│   └── index.js             # Hooks barrel export
+├── pages/                   # View screens and routing targets
+│   ├── DashboardPage.jsx
+│   ├── TrackingPage.jsx
+│   ├── VehiclesPage.jsx
+│   ├── DriversPage.jsx
+│   ├── ShipmentsPage.jsx
+│   ├── AlertsPage.jsx
+│   ├── AnalyticsPage.jsx
+│   ├── OperatorProfilePage.jsx
+│   ├── PlatformSettingsPage.jsx
+│   ├── LoginPage.jsx
+│   ├── SignupPage.jsx
+│   └── index.js             # Pages barrel export
+├── routes/                  # Routing architecture
+│   ├── AppRoutes.jsx        # Declarative route configuration
+│   ├── ProtectedRoute.jsx   # Session authentication guard
+│   └── index.js             # Routes barrel export
+├── services/                # Business logic & API abstraction
+│   ├── fleetService.js      # Asynchronous data service with localStorage caching
+│   └── index.js             # Services barrel export
+├── utils/                   # Pure utility functions
+│   ├── formatters.js        # Currency (₹ INR), distance (km), weight (MT), IST dates
+│   ├── statusHelpers.js     # Color badges, severity tags, and telemetry helpers
+│   └── index.js             # Utilities barrel export
+├── App.jsx                  # Clean application bootstrap
+├── index.css                # Global Tailwind styles & design tokens
+└── main.jsx                 # React 18 DOM mount entry point
+```
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Framework**: React.js 19 + Vite 8
+- **Core**: React 19, JavaScript (ESNext), HTML5
+- **Build System**: Vite 8 with Hot Module Replacement (HMR)
+- **Styling**: Tailwind CSS 3.4 with custom CSS variable design tokens
 - **Routing**: React Router 7 (`BrowserRouter`, `Routes`, `Route`, `Outlet`, `Navigate`)
-- **Styling**: Tailwind CSS 3.4 with custom enterprise dark mode palette & glassmorphism
-- **Mapping & Geo**: Leaflet 1.9 + React-Leaflet 5 (`MapContainer`, `TileLayer`, `Marker`, `Popup`, `Polyline`, `divIcon`)
-- **Visual Analytics**: Recharts 3.10 (`BarChart`, `AreaChart`, `PieChart`, `ResponsiveContainer`)
+- **GIS Mapping**: Leaflet 1.9 & React-Leaflet (`MapContainer`, `TileLayer`, `Marker`, `Polyline`, `divIcon`)
+- **Data Visualization**: Recharts (`ResponsiveContainer`, `BarChart`, `PieChart`, `AreaChart`)
 - **Icons**: Lucide React
-- **State Management**: React Context (`FleetContext`) with local storage persistence and mock API service abstraction layer (`fleetService.js`)
+- **Portals**: React DOM Portal for top-layer modal window stacking
 
 ---
 
-## 🚀 Getting Started
+## ⚡ Quick Start & Setup
 
 ### Prerequisites
-- Node.js (v18.0.0 or higher recommended)
-- npm (v9.0.0 or higher)
+- **Node.js**: v18.0.0 or higher
+- **npm**: v9.0.0 or higher
 
-### Installation & Setup
+### Local Development
 
 1. **Clone the repository**:
    ```bash
-   git clone <repo-url>
+   git clone <repository-url>
    cd "Logistics & Fleet Tracking Platform"
    ```
 
@@ -85,7 +175,7 @@ Built with **React.js**, **Tailwind CSS**, **React Router v7**, **Leaflet**, and
    npm install
    ```
 
-3. **Start the local development server**:
+3. **Start the development server**:
    ```bash
    npm run dev
    ```
@@ -95,84 +185,23 @@ Built with **React.js**, **Tailwind CSS**, **React Router v7**, **Leaflet**, and
    ```bash
    npm run build
    ```
-   The production bundle will be generated in the `dist/` directory.
+   The production-ready assets will be bundled in the `dist/` directory.
 
 ---
 
-## 🌐 Deployment to Netlify / Vercel
+## 🔐 Demo Credentials
 
-### Deploying to Netlify
-1. Connect your repository to Netlify.
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. For single-page app routing, ensure `_redirects` or `netlify.toml` contains:
-   ```toml
-   [[redirects]]
-     from = "/*"
-     to = "/index.html"
-     status = 200
-   ```
+The platform includes mock session persistence so you can test authentication immediately:
 
-### Deploying to Vercel
-1. Import the Git repository in Vercel.
-2. Framework preset: **Vite**
-3. Build command: `npm run build`
-4. Output directory: `dist`
-5. Click **Deploy**.
+- **Email**: `akash.barik@bharatlogix.in`
+- **Password**: Any password (simulated authentication)
+- **Default Role**: Operations Lead & AIS-140 Dispatch Admin
+- **Station**: Mumbai Central Freight Dispatch Hub, MH
+
+*(You can also use `/signup` to register a new operator account or edit your details in `/profile`.)*
 
 ---
 
-## 📁 Project Architecture
+## 📄 License
 
-```
-src/
-├── api/
-│   └── mockData.js          # Realistic enterprise logistics seed data
-├── context/
-│   └── FleetContext.jsx     # Central state, CRUD operations, live simulation ticker, toasts
-├── services/
-│   └── fleetService.js      # Async API service abstraction with simulated latency & localStorage
-├── components/
-│   ├── layout/
-│   │   ├── Layout.jsx       # Root layout wrapper
-│   │   ├── Sidebar.jsx      # Collapsible sidebar navigation & live telematics switch
-│   │   └── Navbar.jsx       # Top navigation, status indicator, alert bell, profile
-│   ├── common/
-│   │   ├── StatCard.jsx     # KPI statistical indicator card with micro-animations
-│   │   ├── StatusBadge.jsx  # Color-coded glowing status pill
-│   │   ├── SearchFilterBar.jsx # Advanced multi-parameter filter toolbar
-│   │   ├── Modal.jsx        # Accessible dialog window with ESC / backdrop dismiss
-│   │   ├── EmptyState.jsx   # Friendly empty state display
-│   │   ├── LoadingSkeleton.jsx # Skeleton loaders for tables & cards
-│   │   └── Toast.jsx        # Notification alert banners
-│   ├── map/
-│   │   ├── FleetMap.jsx     # High-performance Leaflet map with dynamic routes & divIcons
-│   │   └── TelemetryCard.jsx # Live telemetry Heads-Up Display (HUD)
-│   ├── vehicles/
-│   │   ├── VehicleTable.jsx
-│   │   ├── VehicleModal.jsx
-│   │   └── VehicleDetailsDrawer.jsx
-│   ├── drivers/
-│   │   ├── DriverCard.jsx
-│   │   ├── DriverModal.jsx
-│   │   └── DriverScorecard.jsx
-│   ├── shipments/
-│   │   ├── ShipmentTable.jsx
-│   │   ├── ShipmentModal.jsx
-│   │   └── ShipmentTimeline.jsx
-│   └── alerts/
-│       └── AlertDropdown.jsx
-└── pages/
-    ├── DashboardPage.jsx    # Operations command center & KPI breakdown
-    ├── TrackingPage.jsx     # Live GPS radar & telemetry HUD
-    ├── VehiclesPage.jsx     # Fleet asset management & technical specs
-    ├── DriversPage.jsx      # Driver directory & CDL compliance scorecards
-    ├── ShipmentsPage.jsx    # Freight dispatch & milestone tracking
-    ├── AlertsPage.jsx       # Incident management center
-    └── AnalyticsPage.jsx    # SLA compliance, fuel economy & hub throughput
-```
-
----
-
-## 📝 License
-MIT License. Built for enterprise fleet logistics and telemetry tracking operations.
+This project is licensed under the **MIT License**. Built for enterprise logistics management and commercial fleet tracking operations.
