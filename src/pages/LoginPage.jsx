@@ -156,7 +156,7 @@ export const LoginPage = () => {
           </div>
 
           {/* Bottom Govt Regulatory Strip */}
-          <div className="relative z-10 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 font-mono">
+          <div className="relative z-10 pt-5 mt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 font-mono">
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               MoRTH AIS-140 CERTIFIED

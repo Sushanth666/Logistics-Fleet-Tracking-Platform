@@ -105,14 +105,14 @@ export const SignupPage = () => {
       </div>
 
       {/* LEFT 5 COLS: High-Impact Visual Showcase */}
-      <div className="lg:w-5/12 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-10 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative lg:min-h-screen lg:sticky lg:top-0 shrink-0">
+      <div className="lg:w-5/12 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-8 lg:p-8 lg:pb-6 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800 relative lg:min-h-screen lg:h-screen lg:sticky lg:top-0 shrink-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 space-y-7">
-            <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-600 to-pink-500 flex items-center justify-center shadow-xl shadow-purple-600/30">
-                <Truck className="w-7 h-7 text-white" />
+          <div className="relative z-10 space-y-5">
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-600 to-pink-500 flex items-center justify-center shadow-xl shadow-purple-600/30">
+                <Truck className="w-6 h-6 text-white" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -125,8 +125,8 @@ export const SignupPage = () => {
               </div>
             </div>
 
-            <div className="space-y-3">
-              <h1 className="text-3xl font-black tracking-tight text-white leading-tight">
+            <div className="space-y-2">
+              <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight">
                 Join 1,200+ Commercial Fleets Across India
               </h1>
               <p className="text-xs text-slate-300 leading-relaxed">
@@ -135,9 +135,9 @@ export const SignupPage = () => {
             </div>
 
             {/* Compliance & Integration Badges */}
-            <div className="space-y-3 pt-2">
-              <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 backdrop-blur-md hover:border-purple-500/30 transition-all">
-                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <div className="space-y-2.5 pt-1">
+              <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 backdrop-blur-md hover:border-purple-500/30 transition-all">
+                <div className="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div>
@@ -146,8 +146,8 @@ export const SignupPage = () => {
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 backdrop-blur-md hover:border-purple-500/30 transition-all">
-                <div className="w-8 h-8 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
+              <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 backdrop-blur-md hover:border-purple-500/30 transition-all">
+                <div className="w-7 h-7 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
                   <Radio className="w-4 h-4" />
                 </div>
                 <div>
@@ -156,8 +156,8 @@ export const SignupPage = () => {
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 backdrop-blur-md hover:border-purple-500/30 transition-all">
-                <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+              <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 backdrop-blur-md hover:border-purple-500/30 transition-all">
+                <div className="w-7 h-7 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
                   <Zap className="w-4 h-4" />
                 </div>
                 <div>
@@ -168,10 +168,10 @@ export const SignupPage = () => {
             </div>
 
             {/* Quick Mobile Jump to Registration Form */}
-            <div className="lg:hidden pt-2 flex items-center justify-between">
+            <div className="lg:hidden pt-1 flex items-center justify-between">
               <a
                 href="#signup-form"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 border border-purple-400/30 text-purple-200 text-xs font-semibold backdrop-blur-md transition-all active:scale-95"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 border border-purple-400/30 text-purple-200 text-xs font-semibold backdrop-blur-md transition-all active:scale-95"
               >
                 <span>Scroll to Registration Form</span>
                 <ArrowDown className="w-3.5 h-3.5 text-purple-300 animate-bounce" />
@@ -180,9 +180,9 @@ export const SignupPage = () => {
             </div>
           </div>
 
-          <div className="relative z-10 pt-8 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
+          <div className="relative z-10 pt-5 mt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-mono">
             <span>MoRTH & ULIP COMPLIANT PLATFORM</span>
-            <span className="text-emerald-400">● 99.98% SLA</span>
+            <span className="text-emerald-400 font-bold">● 99.98% SLA</span>
           </div>
         </div>
 
