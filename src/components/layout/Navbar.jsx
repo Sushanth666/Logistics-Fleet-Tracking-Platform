@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Search } from 'lucide-react';
+import { Menu, Search, Radio } from 'lucide-react';
 import { useFleet } from '../../context/FleetContext';
 import { AlertDropdown } from '../alerts/AlertDropdown';
 import { ThemeToggle } from './ThemeToggle';
@@ -75,13 +75,18 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
           {/* Light / Dark Mode Toggle */}
           <ThemeToggle />
 
-          {/* Quick Link to Map Tracking */}
+          {/* Quick Link to Map Tracking (Symbol Icon) */}
           <Link
             to="/tracking"
-            className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all bg-purple-100 hover:bg-purple-200 text-purple-700 border-purple-200 dark:bg-purple-600/15 dark:hover:bg-purple-600/25 dark:text-purple-300 dark:border-purple-500/30"
+            className="relative p-2.5 rounded-xl border transition-all bg-purple-50 hover:bg-purple-100 dark:bg-purple-600/15 dark:hover:bg-purple-600/25 text-purple-700 dark:text-purple-300 border-purple-200/90 dark:border-purple-500/30 flex items-center justify-center cursor-pointer shadow-xs group"
+            title="Live GPS Radar Map (/tracking)"
+            aria-label="Open Live Radar Map"
           >
-            <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-purple-400 animate-ping" />
-            Live Radar Map
+            <Radio className="w-4 h-4 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform" />
+            <span className="absolute -top-1 -right-1 flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500" />
+            </span>
           </Link>
 
           {/* Notifications Dropdown */}
