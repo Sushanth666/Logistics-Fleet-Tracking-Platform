@@ -21,10 +21,10 @@ export const LoginPage = () => {
   const { isDark } = useTheme();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('akash.barik@bharatlogix.in');
-  const [password, setPassword] = useState('FleetOps@2026');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(true);
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -239,7 +239,7 @@ export const LoginPage = () => {
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={e => setPassword(e.target.value)}
-                    placeholder="••••••••••••"
+                    placeholder="Enter your password"
                     className="w-full bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-10 py-2.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500/40 focus:border-purple-500 transition-all font-mono"
                   />
                   <button
