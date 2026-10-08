@@ -236,7 +236,7 @@ export const TrackingPage = () => {
         <div className={`lg:col-span-8 flex-col gap-4 relative lg:h-full ${
           mobileTab === 'map' ? 'flex' : 'hidden lg:flex'
         }`}>
-          <div className="h-[420px] sm:h-[480px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl relative min-h-[380px]">
+          <div className="h-[420px] sm:h-[480px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl relative min-h-[380px] isolate">
             <FleetMap
               vehicles={filteredVehicles}
               shipments={shipments}

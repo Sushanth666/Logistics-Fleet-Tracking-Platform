@@ -46,7 +46,7 @@ export const Layout = () => {
         <main
           ref={mainRef}
           onScroll={handleScroll}
-          className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 lg:p-8 max-w-7xl w-full mx-auto animate-in fade-in duration-300 overscroll-contain"
+          className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 lg:p-8 max-w-7xl w-full mx-auto animate-in fade-in duration-300 overscroll-contain relative z-0"
         >
           <Outlet />
         </main>

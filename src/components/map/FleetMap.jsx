@@ -193,9 +193,9 @@ const FleetMapInner = ({
   }, [activeShipment, selectedVehicle]);
 
   return (
-    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-950">
+    <div className="relative w-full h-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl bg-slate-100 dark:bg-slate-950 isolate">
       {/* Floating Corridor Selector Controls */}
-      <div className="absolute top-2.5 left-2.5 right-2.5 sm:right-auto z-[1000] flex items-center gap-1.5 p-1.5 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-lg text-[11px] overflow-x-auto overscroll-contain no-scrollbar">
+      <div className="absolute top-2.5 left-2.5 right-2.5 sm:right-auto z-20 flex items-center gap-1.5 p-1.5 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-lg text-[11px] overflow-x-auto overscroll-contain no-scrollbar">
         {INDIA_CORRIDORS.map(c => (
           <button
             key={c.id}

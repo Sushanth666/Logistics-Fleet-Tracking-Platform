@@ -46,7 +46,7 @@ export const ThemeSelector = () => {
 
       {/* Themes Dropdown */}
       {isOpen && (
-        <div className="absolute right-0 mt-3 w-80 sm:w-96 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div className="absolute -right-12 sm:right-0 mt-3 w-[min(384px,calc(100vw-2rem))] max-w-[92vw] rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150">
           <div className="p-3.5 bg-slate-950/70 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-purple-400" />

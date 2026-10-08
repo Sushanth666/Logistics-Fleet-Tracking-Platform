@@ -75,7 +75,7 @@ export const Navbar = ({ onOpenSidebar, onScrollToTop }) => {
   return (
     <header
       onDoubleClick={onScrollToTop}
-      className="sticky top-0 z-30 h-16 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 lg:px-8 flex items-center justify-between transition-colors duration-300"
+      className="sticky top-0 z-40 h-16 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 lg:px-8 flex items-center justify-between transition-colors duration-300"
     >
       {/* Left — Mobile Menu + Live IST Clock */}
       <div className="flex items-center gap-3">
