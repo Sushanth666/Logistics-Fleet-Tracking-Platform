@@ -154,8 +154,8 @@ export const PlatformSettingsPage = () => {
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200/80 dark:border-slate-800 pb-3">
+      {/* Tabs — Clean single-line horizontal scroll on mobile, flex-wrap on tablet/desktop */}
+      <div className="flex items-center gap-2 border-b border-slate-200/80 dark:border-slate-800 pb-3 overflow-x-auto overscroll-contain no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
         {[
           { id: 'telematics', label: 'Telemetry & GPS Radar', icon: Radio },
           { id: 'thresholds', label: 'Safety & Incident Thresholds', icon: Gauge },
@@ -166,13 +166,13 @@ export const PlatformSettingsPage = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
               activeTab === tab.id
                 ? 'bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 text-white shadow-md shadow-purple-600/25'
                 : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
             }`}
           >
-            <tab.icon className="w-3.5 h-3.5" />
+            <tab.icon className="w-3.5 h-3.5 shrink-0" />
             <span>{tab.label}</span>
           </button>
         ))}

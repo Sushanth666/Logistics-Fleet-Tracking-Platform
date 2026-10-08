@@ -416,3 +416,12 @@ html.light table td {
   font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
+/* Hide scrollbars for clean horizontal tab strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

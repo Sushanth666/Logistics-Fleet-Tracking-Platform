@@ -201,8 +201,8 @@ export const OperatorProfilePage = () => {
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap items-center gap-2 mt-8 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+        {/* Tab Navigation — Clean single-line horizontal scroll on mobile, flex-wrap on tablet/desktop */}
+        <div className="flex items-center gap-2 mt-8 pt-4 border-t border-slate-100 dark:border-slate-800/80 overflow-x-auto overscroll-contain no-scrollbar -mx-2 px-2 sm:mx-0 sm:px-0 sm:flex-wrap">
           {[
             { id: 'overview', label: 'Operator Overview & Credentials', icon: User },
             { id: 'security', label: 'Security & Telematics Access', icon: ShieldCheck },
@@ -211,13 +211,13 @@ export const OperatorProfilePage = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-md shadow-purple-600/20'
                   : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
               }`}
             >
-              <tab.icon className="w-3.5 h-3.5" />
+              <tab.icon className="w-3.5 h-3.5 shrink-0" />
               <span>{tab.label}</span>
             </button>
           ))}
